@@ -8,7 +8,7 @@ const body = document.querySelector('body');
 document.addEventListener('DOMContentLoaded', build);
 document.addEventListener('keydown', (event) => {
 	let key = event.keyCode;
-
+	console.log(key);
 	if (key === 37) {player.x  -= player.speed};
 	if (key === 39) {player.x  += player.speed};
 	if (key === 40) {player.y  += player.speed};
