@@ -1,4 +1,4 @@
-//Generating A Random Numbers In A Range That Doesn't Exist In The Array
+//Generating A Random Numbers In A Range That Doesn't Exist In From an Array
 const exNums = [10, 15, 7, 1 4, 2, 5];
 function getRandom(min, max) {
 	let num = Math.floor(Math.random() * (max - min + 1)) + min;
