@@ -62,3 +62,28 @@ function getUsers() {
 		output.innerHTML = html;
 	})
 }
+
+//
+
+const output2 = document.getElementById('div4');
+const url3 = "https://jsonplaceholder.typicode.com/todos";
+loadJSON();
+function loadJSON() {
+	fetch(url3)
+	.then(function(res){
+		return res.json();
+	})
+	.then(function(data){
+		console.log(data);
+		for (let i = 0; i < data.length; i++){
+			let divx = document.createElement("div");
+			if (data[i].completed === true) {
+				divx.style.color = "green";
+			} else {
+				divx.style.color = "red";
+			}
+			divx.textContent = `${data[i].id}.${data[i].title}`; 
+			output2.appendChild(divx);
+		}
+	})
+}
