@@ -25,13 +25,13 @@ const url2 = "https://randomuser.me/api/";
 btn.addEventListener("click", getInput);
 
 function getInput() {
-	fetch(url2)
+	fetch(url)
 	.then(function(response) {
 		return response.json();
 	})
 	.then(function(data) {
 		console.log(data.results);
-		document.getElementById('div2').innerHTML = `${JSON.stringify(data.results)} <br>`;
+		document.getElementById('div2').innerHTML = `${data.value} <br>`;
 		//<img src="${joke.icon_url}">
 	})
 }
