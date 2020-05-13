@@ -67,7 +67,9 @@ function getUsers() {
 
 const output2 = document.getElementById('div4');
 const url3 = "https://jsonplaceholder.typicode.com/todos";
+
 loadJSON();
+
 function loadJSON() {
 	fetch(url3)
 	.then(function(res){
