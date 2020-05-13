@@ -69,19 +69,6 @@ const output2 = document.getElementById('div4');
 const url3 = "https://jsonplaceholder.typicode.com/todos";
 loadJSON();
 function loadJSON() {
-	//
-	  let headers = new Headers();
-
-  headers.append('Content-Type', 'application/json');
-  headers.append('Accept', 'application/json');
-
-  headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
-  headers.append('Access-Control-Allow-Credentials', 'true');
-
-  headers.append('GET', 'POST', 'OPTIONS');
-
-  headers.append('Authorization', 'Basic ' + base64.encode(username + ":" + password))
-	//
 	fetch(url3)
 	.then(function(res){
 		return res.json();
