@@ -1,5 +1,7 @@
 const btn = document.querySelector("button");
 const output = document.querySelector(".output");
+//output.setAttribute("style", "width: 200px; height: 100px; color: whitesmoke; text-align: center;");
+output.style.cssText = "width: 200px; height: 100px; color: whitesmoke; text-align: center;";
 
 btn.addEventListener("click", showOutput);
 
