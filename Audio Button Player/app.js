@@ -17,14 +17,7 @@ function init() {
 		document.body.appendChild(div);
 	})
 }
-/*
-for (let i = 0; i < animals.length; i++) {
-	let elem = animals[i];
-	elem.addEventListener("click", function() {
-		
-	})
-}
-*/
+
 body.addEventListener("keydown", function(event) {
 	let key = event.keyCode;
 		let animal = key;
