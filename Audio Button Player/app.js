@@ -1,17 +1,31 @@
 const animals = document.querySelectorAll(".animalSounds-btn");
 const body = document.querySelector("body");
 
+const animalsList = ["lion", "cougar", "dog"];
 
+document.addEventListener("DOMContentLoaded", init);
+
+function init() {
+	animalsList.forEach((item) => {
+		let div = document.createElement("div");
+		div.setAttribute("class", `animalSounds-btn ${item}`);
+		div.innerText = `${item[0].toUpperCase()}${item.slice(1, item.length).toLowerCase()}`
+		div.addEventListener("click", () => {
+			let animal = item.toLowerCase();
+			playIt(animal);
+		})
+		document.body.appendChild(div);
+	})
+}
+/*
 for (let i = 0; i < animals.length; i++) {
 	let elem = animals[i];
 	elem.addEventListener("click", function() {
-		let animal = this.innerHTML.toLowerCase();
-		playIt(animal);
+		
 	})
 }
-
+*/
 body.addEventListener("keydown", function(event) {
-	let animalsList = ["lion", "cougar", "dog"]
 	let key = event.keyCode;
 		let animal = key;
 	switch(key) {
