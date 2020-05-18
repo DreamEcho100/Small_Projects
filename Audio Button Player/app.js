@@ -6,6 +6,7 @@ for (let i = 0; i < animals.length; i++) {
 	elem.addEventListener("click", function() {
 		let animal = this.innerHTML.toLowerCase();
 		makeSound(animal);
+		addStyle(animal);
 	})
 }
 
@@ -15,6 +16,16 @@ body.addEventListener("keydown", function(event) {
 		makeSound(animal);
 	}	
 })
+
+function addStyle(name) {
+	console.log(name);
+	let activeElem = document.querySelector(`.${name}`);
+	console.log(activeElem);
+	activeElem.classList.add("active");
+	setTimeout(function () {
+		activeElem.classList.remove("active");
+	}, 200)
+}
 function makeSound(name) {
 		console.log(name);
 		switch(name) {

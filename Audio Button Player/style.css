@@ -7,3 +7,8 @@
 	display: inline-block;
 	margin: 15px;
 }
+
+.active {
+	color: red;
+	border-color: red;
+}
