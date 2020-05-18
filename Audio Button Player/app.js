@@ -1,6 +1,45 @@
 const animals = document.querySelectorAll(".animalSounds-btn");
 const body = document.querySelector("body");
 
+
+for (let i = 0; i < animals.length; i++) {
+	let elem = animals[i];
+	elem.addEventListener("click", function() {
+		let animal = this.innerHTML.toLowerCase();
+		playIt(animal);
+	})
+}
+
+body.addEventListener("keydown", function(event) {
+	let animalsList = ["lion", "cougar", "dog"]
+	let key = event.keyCode;
+		let animal = key;
+	switch(key) {
+		case 76:
+		playIt(animalsList[0]);
+		break;
+		case 67:
+		playIt(animalsList[1]);
+		break;
+		case 68:
+		playIt(animalsList[2]);
+		break;
+	}
+})
+
+function playIt(name) {
+	console.log(name);
+	let activeElem = document.querySelector(`.${name}`);
+	console.log(activeElem);
+	let sound = new Audio(`sounds/${name}.mp3`);
+	sound.play();
+	activeElem.classList.add("active");
+	setTimeout(function () {
+		activeElem.classList.remove("active");
+	}, 200)
+}
+
+/*
 for (let i = 0; i < animals.length; i++) {
 	let elem = animals[i];
 	elem.addEventListener("click", function() {
@@ -59,6 +98,7 @@ function makeSound(name) {
 			//
 		}
 }
+*/
 /*
 const barkBTN = document.getElementById("bark-btn");
 const bark = new Audio("sounds/bark.mp3");
