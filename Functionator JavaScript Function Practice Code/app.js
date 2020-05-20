@@ -2,7 +2,7 @@ let body = document.querySelector("body");
 let myBlock;
 let myFunctionList;
 let funList = [];
-
+const movementArray = ["right", "left", "up", "down"];
 document.addEventListener("DOMContentLoaded", () => {
     console.log("ready");
     myBlock = document.createElement("div");
@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("keydown", (event) => {
     event.preventDefault;
     let keyC = event.keyCode;
+    let randomMove = movementArray[Math.floor(Math.random() * movementArray.length)];
     switch (keyC) {
         case 37:
             addFun("left");
@@ -43,6 +44,10 @@ document.addEventListener("keydown", (event) => {
             myBlock.style.backgroundColor = randomColor();
             myBlock.style.color = randomColor();
             break;
+        case 82:
+            addFun(randomMove);
+            break;
+
     }
     if (keyC === 13 || keyC === 32) {
         mover();
@@ -85,6 +90,12 @@ function addFun(val) {
     span.addEventListener("mouseout", function () {
         this.style.backgroundColor = "white";
         this.style.color = "black";
+    });
+    span.addEventListener("click", function () {
+        let currentIndex = funList.indexOf(this);
+        let currentRemovel = funList.splice(currentIndex, 1);
+        console.log(currentRemovel);
+        myFunctionList.removeChild(this);
     });
     myFunctionList.appendChild(span);
     funList.push(span);
