@@ -5,5 +5,5 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("ready");
     myBlock = document.createElement("div");
     myBlock.textContent = "Hello world";
-    document.appendChild(myBlock);
+    body.appendChild(myBlock);
 });
