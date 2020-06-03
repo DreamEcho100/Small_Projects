@@ -44,7 +44,6 @@ function buildBoard() {
 	let cols = 4;
 	let cnt = 0;
 	playArea.game.style.width = cols * 100 + (cols * 2);
-	//playArea.game.style.margin = "auto";
 	playArea.game.style.width = "fit-content";
 	for (let i = 0; i < rows; i++) {
 		let divMain = document.createElement("div");
@@ -114,7 +113,7 @@ function startPop() {
 	let newPop = randomUp();
 	newPop.classList.add("active");
 	newPop.addEventListener("click", hitPop);
-	const time = Math.round(Math.random() * (500) + 750);
+	const time = Math.round(Math.random() * (100) + 750);
 	const val = Math.floor(Math.random() * gameObj.length);
 	newPop.old = newPop.innerText;
 	let score = gameScores[val]
