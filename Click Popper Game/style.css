@@ -1,21 +1,33 @@
-.btn{
+html, body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.btn {
+    display: block;
+    margin: auto;
     cursor: pointer;
     padding: 15px;
     border: 1px solid black;
     text-align: center;
     background-color: blue;
-    color:white;
+    color: white;
+    width: 100px;
 }
 
-.page{
+.page {
     display: none;
+    margin: auto;
+    margin-top: 40px;
 }
 
-.visible{
+.visible {
     display: block;
 }
 
-.pop{
+.pop {
     border: 1px solid #ddd;
     width: 100px;
     height: 100px;
@@ -27,19 +39,11 @@
     font-family: fantasy;
 }
 
-.row{
+.row {
     display: block;
 }
-        
-/*.game {
-    border: 1px solid black;
-}*/
-        
-.gameCell{
-    border: 1px solid black;
-}
 
-.active{
+.active {
     border: 1px solid blue;
     background-color: aliceblue;
     color: black;
@@ -47,7 +51,21 @@
     cursor: pointer;
 }
 
-.img{
+.stats {
+    height: 50px;
+    background-color: black;
+    color: white;
+    font-size: 1.5em;
+    text-align: center;
+    line-height: 28px;
+    height: auto;
+}
+
+.gameCell{
+    border: 1px solid black;
+}
+
+.face{
     border-radius: 90px;
     margin-top: 5px;
 }
