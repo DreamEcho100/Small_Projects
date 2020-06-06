@@ -6,7 +6,7 @@ const gamePlay = document.querySelector(".gamePlay");
 let curCardValue = 0;
 let scoreValue = 0;
 let deck  = [];
-const ranks = [2, 3, 4, 5, 6, 7, 8, 9, "J", "Q", "K", "A"];
+const ranks = ["A", 2, 3, 4, 5, 6, 7, 8, 9, "J", "Q", "K"];
 const suits = ["hearts", "diams", "clubs", "spades"];
 
 for (let i = 0; i < btns.length; i++) {
