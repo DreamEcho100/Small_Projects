@@ -13,12 +13,17 @@ txt.addEventListener("keydown",textCounter);
 const maxLength = 20;
 const warnLength = 15;
 
+output.innerHTML = `There is ${maxLength} characters left.`;
+
 function textCounter(e) {
 	let counter = txt.value.length;
 	if (counter > maxLength) {
 		txt.value = txt.value.substring(0, maxLength);
 	}
 	switch(counter) {
+		case 0:
+			output.style.color = "black";
+			break;
 		case 1:
 			output.style.color = "blue";
 			break;
@@ -31,6 +36,9 @@ function textCounter(e) {
 		case Math.floor(maxLength / 1.25):
 			output.style.color = "red";
 			break;
+		case Math.floor(maxLength):
+			output.style.color = "black";
+			break;
 	}
-	(counter >= maxLength) ? output.innerHTML = `There is no characters left.` : output.innerHTML = `${maxLength - counter} characters left.`;
+	(counter >= maxLength) ? output.innerHTML = `There is no characters left.` : output.innerHTML = `There is ${maxLength - counter} characters left.`;
 }
