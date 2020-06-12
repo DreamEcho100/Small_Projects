@@ -20,8 +20,8 @@ function setupScroll() {
 	sElement.innerHTML = content;
 	let temp = sElement.getBoundingClientRect();
 	console.log(temp);
-	cElement.style.height = `${temp.height}px`;
-	sElement.style.top = `${temp.height}px`;
+	cElement.style.height = `${temp.height / 2}px`;
+	sElement.style.top = `${cElement.clientHeight}px`//`${temp.height}px`;
 	scrollInt = setInterval(scrollingElem,50);
 }
 
@@ -44,11 +44,11 @@ function scrollingElem() {
 			sElement.style.top = `${cElement.clientHeight}px`; 
 		}
 		if (scrollSpeed < 0 && parseInt(sElement.style.top) > cElement.clientHeight) {
-			sElement.style.top = `-${cElement.clientHeight - 1}px`; 
+			sElement.style.top = `-${sElement.clientHeight - 1}px`; 
 		}
 		output.innerHTML =`scrollSpeed ${scrollSpeed} Y position ${posY}\n
-							cElement.clinetHeight ${cElement.clientHeight}\n
-							sElement.clinetHeight ${sElement.clientHeight}\n
+							cElement.clientHeight ${cElement.clientHeight}\n
+							sElement.clientHeight ${sElement.clientHeight}\n
 							`;
 	}
 }
