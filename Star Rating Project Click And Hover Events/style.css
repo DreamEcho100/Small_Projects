@@ -28,9 +28,10 @@ ul {
 }
 
 .zeroRating {
+    font-family: cursive;
     color: red;
     font-weight: bolder;
-    border: black 1px solid;
+    border: black 2px solid;
     border-radius: 56px;
     width: fit-content;
     padding: 4px;
@@ -38,14 +39,14 @@ ul {
     line-height: 14px;
     height: 14px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.3s/* padding 0.4s*/;
 }
 
 .zeroRating:hover {
     color: white;
     background-color: red;
     font-weight: bolder;
-    border: white 1px solid;
-    padding: 5px;
-    margin: 11px 5px;
+    border-color: white;
+    padding: 6px;
+    margin: 10px 4px;
 }
