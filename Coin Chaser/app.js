@@ -37,7 +37,6 @@ keys.forEach((item) => {
 
 function catchCoin(a, b) {
 	if (isCollide(a, b)) {
-		console.log(true);
 		b.style.left = `${Math.floor(Math.random() * window.innerWidth - (window.innerWidth * 0.1))}px`;
 		b.style.top = `${Math.floor(Math.random() * window.innerHeight - (window.innerHeight * 0.1))}px`;
 		if (isCollide(a, b)) {
@@ -56,54 +55,7 @@ function catchCoin(a, b) {
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*
 function isTouching(a, b) {
 	const aRect = a.getBoundingClientRect();
 	const bRect = b.getBoundingClientRect();
@@ -115,7 +67,7 @@ function isTouching(a, b) {
 		aRect.left > bRect.left + bRect.width
 	);
 }
-
+*/
 
 function isCollide(a, b) {
     let aRect = a.getBoundingClientRect();
