@@ -1,40 +1,40 @@
-const player = document.querySelector("#player");
+const avatar = document.querySelector("#player");
 const coin = document.querySelector("#coin");
 const score = document.querySelector("#score");
 
 let play = {
-	speed: (player.offsetWidth / 2), 
+	speed: (avatar.offsetWidth / 2), 
 	ready: true,
 	score: -50
 }
 
 let keys = ["keydown", "keyUp", "keyhold"];
-catchCoin(player, coin);
+catchCoin(avatar, coin);
 
 keys.forEach((item) => {
     document.addEventListener(item, function (e) {
 	    if (play.ready) {
 	    	let key = e.key;
-			if (key === "ArrowUp" && player.offsetTop > (score.offsetTop + score.offsetHeight)) {
-				player.style.top = `${(player.offsetTop) - play.speed}px`;
+			if (key === "ArrowUp" && avatar.offsetTop > (score.offsetTop + score.offsetHeight)) {
+				avatar.style.top = `${(avatar.offsetTop) - play.speed}px`;
 			}
 			if (key === "ArrowDown") {
-				player.style.top = `${(player.offsetTop) + play.speed}px`;
-				if (player.offsetTop) {}
+				avatar.style.top = `${(avatar.offsetTop) + play.speed}px`;
+				if (avatar.offsetTop) {}
 			}
 			if (key === "ArrowLeft") {
-				player.style.left = `${(player.offsetLeft) - play.speed}px`;
-				player.style.transform = "scale(-1, 1)";
+				avatar.style.left = `${(avatar.offsetLeft) - play.speed}px`;
+				avatar.style.transform = "scale(-1, 1)";
 			}
 			if (key === "ArrowRight") {
-				player.style.left = `${(player.offsetLeft) + play.speed}px`;
-				player.style.transform = "scale(1, 1)";
+				avatar.style.left = `${(avatar.offsetLeft) + play.speed}px`;
+				avatar.style.transform = "scale(1, 1)";
 			}
-			inTheGame(player);
-			player.ready = false;
-			setTimeout(() => {player.ready = true}, 500);
+			inTheGame(avatar);
+			avatar.ready = false;
+			setTimeout(() => {avatar.ready = true}, 500);
 	    }
-    	catchCoin(player, coin);
+    	catchCoin(avatar, coin);
     });
 })
 
