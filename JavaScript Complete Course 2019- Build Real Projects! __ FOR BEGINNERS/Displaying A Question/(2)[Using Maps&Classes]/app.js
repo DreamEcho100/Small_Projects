@@ -277,7 +277,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				msg.innerText = "";
 				msg.style.backgroundColor = "transparent";
 				qNum = num;
-				const chosenQ = arr[num];
+				const chosenQ = arr[qNum];
 				this.displayIt(chosenQ);
 			}, 750)
 
