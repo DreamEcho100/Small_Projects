@@ -242,7 +242,8 @@ document.addEventListener("DOMContentLoaded", function () {
 							msg.innerText = rightAnswerResponse;
 							msg.style.backgroundColor = "lightseagreen";
 							msg.style.color = "darkred";
-							QuestionMaker.toggleBetweenQuestions("next", maps, div.number)
+							qNum = div.number;
+							QuestionMaker.toggleBetweenQuestions("next", maps, qNum)
 						} else {
 							msg.innerText = wrongAnswerResponse;
 							msg.style.backgroundColor = "darkred";
