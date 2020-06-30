@@ -272,11 +272,11 @@ document.addEventListener("DOMContentLoaded", function () {
 					num--;
 				}
 			}
+			qNum = num;
 			setTimeout(() => {
 				output.innerText = "";
 				msg.innerText = "";
 				msg.style.backgroundColor = "transparent";
-				qNum = num;
 				const chosenQ = arr[qNum];
 				this.displayIt(chosenQ);
 			}, 750)
@@ -308,6 +308,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	let randomQuestion = maps[qNum];
 	
 	QuestionMaker.displayIt(randomQuestion);
+
 	prevQuestion.addEventListener("click", function () {
 		QuestionMaker.toggleBetweenQuestions("prev", maps, qNum)
 	})
