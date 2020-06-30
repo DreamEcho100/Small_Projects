@@ -222,14 +222,16 @@ document.addEventListener("DOMContentLoaded", function () {
 			return classification;
 		}
 
-		static displayIt(chosenQ) {
+		static displayIt(chosenQ, curNum) {
 			let solution = chosenQ.get("correct");
 			let question = document.createElement("h3");
+			question.number = curNum;
 			question.innerText = chosenQ.get("question");
 			output.appendChild(question);
 			let optionsHolder = document.createElement("div");
 			optionsHolder.setAttribute("class", "options");
 			for (let [key, value] of chosenQ.entries()) {
+				console.log(key, value)
 				if (typeof key === "number") {
 					let div = document.createElement("button");
 					div.classList.add("optionsBtn");
@@ -242,7 +244,7 @@ document.addEventListener("DOMContentLoaded", function () {
 							msg.innerText = rightAnswerResponse;
 							msg.style.backgroundColor = "lightseagreen";
 							msg.style.color = "darkred";
-							QuestionMaker.toggleBetweenQuestions("next", maps, div.number)
+							QuestionMaker.toggleBetweenQuestions("next", maps, question.number)
 						} else {
 							msg.innerText = wrongAnswerResponse;
 							msg.style.backgroundColor = "darkred";
@@ -278,7 +280,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				msg.innerText = "";
 				msg.style.backgroundColor = "transparent";
 				const chosenQ = arr[qNum];
-				this.displayIt(chosenQ);
+				this.displayIt(chosenQ, qNum);
 			}, 750)
 
 		}
@@ -303,11 +305,15 @@ document.addEventListener("DOMContentLoaded", function () {
 							);
 	q3 = question3.classifySection();
 
+	maps = [q1, q2, q3]
+
 	qNum = Math.floor(Math.random() * maps.length);
 
 	let randomQuestion = maps[qNum];
+	QuestionMaker.testing();
+	debugger;
 	
-	QuestionMaker.displayIt(randomQuestion);
+	QuestionMaker.displayIt(randomQuestion, qNum);
 
 	prevQuestion.addEventListener("click", function () {
 		QuestionMaker.toggleBetweenQuestions("prev", maps, qNum)
