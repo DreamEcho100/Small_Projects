@@ -4,6 +4,7 @@ const ulList = ul.querySelectorAll('li');
 
 
 inp.addEventListener('keydown', (e) => {
+	console.log(e);
     let li = document.createElement('li');
     let temp = `${e.key}(${e.keyCode})`
     let liText = document.createTextNode(temp);
