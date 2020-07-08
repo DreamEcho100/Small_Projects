@@ -15,21 +15,30 @@ document.addEventListener("DOMContentLoaded", () => {
     themesMap.push({type:item, svg:themesValues[idx]});
   });
 
-  themesMap[currentNavBarTheme].svg.style.display = "block";
-  document.body.setAttribute("class", themesMap[currentNavBarTheme].type);
+  changeTheme(currentNavBarTheme);
+
   themebtn.addEventListener("click", () => {
     prevNavBarTheme = currentNavBarTheme;
-    if (currentNavBarTheme === themesMap.length - 1) {
+    if (currentNavBarTheme >= themesMap.length - 1) {
       currentNavBarTheme = 0;
     } else {
       currentNavBarTheme++;
     }
     localStorage.setItem('themeIdx', currentNavBarTheme);
-    themesMap[prevNavBarTheme].svg.style.display = "none";
-    themesMap[currentNavBarTheme].svg.style.display = "block";
-    document.body.setAttribute("class", themesMap[currentNavBarTheme].type);
+    changeTheme(currentNavBarTheme, prevNavBarTheme);
   })
-})
+});
+
+function changeTheme(cur, prev) {
+  if (cur > themesMap.length - 1) {
+    cur = 0;
+  }
+  if (prev || prev === 0) {
+    themesMap[prev].svg.style.display = "none";
+  }
+  themesMap[cur].svg.style.display = "block";
+  document.body.setAttribute("class", themesMap[cur].type);
+}
 
 
 /*

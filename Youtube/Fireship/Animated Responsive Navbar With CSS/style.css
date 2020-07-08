@@ -9,8 +9,12 @@
 }
 
 body {
+	/*
 	color: black;
 	background-color: white;
+	*/
+	color: var(--text-primary);
+	background-color: var(--bg-primary);
 	margin: 0;
 	padding: 0;
 }
@@ -67,7 +71,7 @@ main {
 }
 
 .nav-link:hover {
-	filter: grayscale(0) opacity(1) hue-rotate(720deg);
+	filter: grayscale(0) opacity(1) hue-rotate(0deg);
 	background-color: var(--bg-secondary);
 	color: var(--text-secondary);
 }
@@ -179,6 +183,7 @@ main {
   --bg-secondary: #f5e5b8;
 }
 
+/*
 #themeButton .theme-icon {
   display: none;
 }
@@ -194,3 +199,4 @@ main {
 #themeButton #solarIcon {
   display: block;
 }
+*/
