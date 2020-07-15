@@ -3,16 +3,13 @@ import WeatherEngine from "./Components/WeatherEngine.js";
 import "./App.css";
 
 function App() {
-  /*
-  
-      <WeatherEngine defaultLocation="sydney,au"/>
-      <WeatherEngine defaultLocation="washington,us"/>
-  */
   return (
     <div>
-      <WeatherEngine defaultLocation="Cairo,eg"/>
+      <WeatherEngine defaultLocation="Cairo,eg" />
+      <WeatherEngine defaultLocation="sydney,au" />
+      <WeatherEngine defaultLocation="washington,us" />
     </div>
-  )
+  );
 }
 
 export default App;

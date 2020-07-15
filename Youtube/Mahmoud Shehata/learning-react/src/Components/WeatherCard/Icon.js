@@ -6,8 +6,8 @@ const Icon = (props) => {
   let Icon = styled.img`
     width: 40%;
   `;
-
-  switch (props.condation) {
+  
+  switch (props.condition) {
     case "Clouds":
       icon = `./img/Weather Icons/Mostly Cloudy-2x.png`;
       break;
