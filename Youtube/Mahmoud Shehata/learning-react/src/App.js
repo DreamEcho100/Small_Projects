@@ -5,10 +5,10 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <WeatherCard temp={-20} />
-      <WeatherCard temp={35} />
-      <WeatherCard temp={-15} />
-      <WeatherCard temp={25} />
+      <WeatherCard temp={-20} condation="Dust" />
+      <WeatherCard temp={35} condation="Clear" />
+      <WeatherCard temp={-15} condation="Haze" />
+      <WeatherCard temp={25} condation="Clouds" />
     </div>
   );
 }

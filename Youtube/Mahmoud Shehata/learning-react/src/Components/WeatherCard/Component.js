@@ -1,18 +1,19 @@
 import React from "react";
 import styled from "@emotion/styled";
 import Location from "./Location.js";
+import Icon from "./Icon.js";
 
-const WeatherCard = (props) => {
+const WeatherCard = ({ temp, condation }) => {
   let highColor, lowColor, bg;
 
-  if (props.temp > 12) {
-    highColor = (1 - (props.temp - 12) / 28) * 255;
+  if (temp > 12) {
+    highColor = (1 - (temp - 12) / 28) * 255;
     lowColor = highColor - 150;
     bg = `
       rgb(255, ${highColor}, 0),
       rgb(255, ${lowColor}, 0)`;
-  } else if (props.temp <= 12) {
-    highColor = (1 - (props.temp + 20) / 32) * 255;
+  } else if (temp <= 12) {
+    highColor = (1 - (temp + 20) / 32) * 255;
     lowColor = highColor - 150;
     bg = `
       rgb(0, ${highColor}, 255),
@@ -34,8 +35,8 @@ const WeatherCard = (props) => {
   return (
     <Card>
       <Location />
-      <img className="icon" src="" alt="Weather Icon" />
-      <h1 className="temp">{props.temp} ْC</h1>
+      <Icon condation={condation} />
+      <h1 className="temp">{temp} ْC</h1>
       <h3 className="condation">Cloudy</h3>
     </Card>
   );
