@@ -2,8 +2,9 @@ import React from "react";
 import styled from "@emotion/styled";
 import Location from "./Location.js";
 import Icon from "./Icon.js";
+import Condition from "./Condition.js";
 
-const WeatherCard = ({ temp, condation }) => {
+const WeatherCard = ({ temp, condition, city, country }) => {
   let highColor, lowColor, bg;
 
   if (temp > 12) {
@@ -21,6 +22,7 @@ const WeatherCard = ({ temp, condation }) => {
   }
 
   const Card = styled.div`
+    color: white;
     margin: 0 auto;
     background: linear-gradient(to top, ${bg});
     width: 12.5rem;
@@ -31,13 +33,11 @@ const WeatherCard = ({ temp, condation }) => {
     align-items: center;
     border-radius: 15px;
   `;
-
   return (
     <Card>
-      <Location />
-      <Icon condation={condation} />
-      <h1 className="temp">{temp} ْC</h1>
-      <h3 className="condation">Cloudy</h3>
+      <Location city={city} country={country} />
+      <Icon condition={condition} />
+      <Condition temp={temp} condition={condition} />
     </Card>
   );
 };

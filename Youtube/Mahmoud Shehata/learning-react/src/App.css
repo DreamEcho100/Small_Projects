@@ -10,18 +10,3 @@ body {
   padding: 0;
 }
 */
-
-.App {
-  color: whitesmoke;
-}
-
-.temp {
-  font-family: "Fira Sans", sans-serif;
-  font-size: 2rem;
-  font-weight: 200;
-}
-
-.condation {
-  font-family: "Merriweather", sans-serif;
-  font-size: 1.2rem;
-}
