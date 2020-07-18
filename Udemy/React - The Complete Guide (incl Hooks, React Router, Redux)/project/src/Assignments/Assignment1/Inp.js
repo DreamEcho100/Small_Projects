@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 const Inp = (props) => {
 
 	return (
-			<input type="text" onChange={props.change} value={props.current} />
+		<input type="text" onChange={props.change} value={props.current} />
 	)
 }
 
