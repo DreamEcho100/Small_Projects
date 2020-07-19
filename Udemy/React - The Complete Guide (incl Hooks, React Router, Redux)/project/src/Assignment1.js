@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Inp from './Assignments/Assignment1/Inp'
-import Output from './Assignments/Assignment1/Output'
+import styled from 'styled-components';
+import InpOutField from './Assignments/Assignment1/InpOutField';
 
 class Assignment1 extends React.Component  {
 	state = {
@@ -10,7 +10,7 @@ class Assignment1 extends React.Component  {
 	changeTheInp = (e) => {
 		this.setState({inp: e.target.value});
 	}
-
+/*
 	mystyle = {
       border: "1px solid black",
       margin: "5px",
@@ -20,33 +20,48 @@ class Assignment1 extends React.Component  {
       justifyContent: "center",
       backgroundColor: "lightblue"
     };
+    // style={this.mystyle}
+*/
+    render() {
 
-    render() {	
+    	const StyleDiv = styled.div`
+			border: 1px solid black;
+			margin: 5px;
+			padding: 5px,
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			background-color: lightblue;
+			text-align: center;
+			transition: all 0.5s;
+
+			&:hover {
+				border: 3px solid black;
+				margin: 3px;
+			}
+
+			@media (max-width: 980px) {
+				background-color: blue;
+			}
+
+			@media (max-width: 570px) {
+				background-color: red;
+			}
+
+			@media (max-width: 320px) {
+				background-color: yellow;
+			}
+    	`;
+
 		return (
-			<div style={this.mystyle}>
-				<Inp 
+			<StyleDiv>
+				<InpOutField 
 					change={this.changeTheInp}
 					current={this.state.inp}
 				/>
-				<Output change={this.state.inp} />
-			</div>
+			</StyleDiv>
 		);
 	}
 }
 
 export default Assignment1;
-
-
-
-/*
-import React from 'react';
-import Inp from './Assignments/Assignment1/Inp'
-
-function Assignment1() {
-  return (
-    <Inp />
-  );
-}
-
-export default Assignment1;
-*/

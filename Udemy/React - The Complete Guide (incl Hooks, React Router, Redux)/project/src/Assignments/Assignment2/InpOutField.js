@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import Radium from 'radium';
 import ValidationComponent from './ValidationComponent';
 
 const InpOutField = (props) => {
+      
 	let cur = props.current;
 	const mystyle = {
       border: "1px solid black",
@@ -10,19 +12,20 @@ const InpOutField = (props) => {
       display: "inline-block",
       textAlign: "center",
       height: "fit-content",
-      backgroundColor: "orangered"
+      backgroundColor: "orangered",
+      transition: "all 0.5s",
+      ":hover": {
+      	backgroundColor: "orange"
+      }
     };
-/*
-*/
 
 	return (
 		<div style={mystyle}>
 			<input type="text" onChange={props.change} value={cur}/>
 			
 			<ValidationComponent length={cur.length} />
-			<span onClick={props.click}>X</span>
 		</div>
 	)
 }
 
-export default InpOutField;
+export default Radium(InpOutField);

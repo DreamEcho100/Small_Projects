@@ -21,11 +21,15 @@ npm install --save react-router-dom
 npm i emotion
 npm install @emotion/core
 npm install @emotion/styled
+npm install --save radium
+npm install --save styled-components
+npm install --save-dev babel-plugin-styled-components
 npm install axios
 npm i --save @fortawesome/fontawesome-svg-core
 npm i --save @fortawesome/free-solid-svg-icons
 npm i --save @fortawesome/react-fontawesome
 npm install react-spring
+npm audit fix
 
 |-------------------------------------------------------|
 
@@ -33,6 +37,9 @@ npm install react-spring
 
 https://reactrouter.com/web/guides/quick-start
 https://emotion.sh/docs/introduction
+https://github.com/FormidableLabs/radium/tree/master/docs/guides#media-queries
+https://styled-components.com/
+https://github.com/styled-components/babel-plugin-styled-components
 https://www.npmjs.com/package/axios
 https://github.com/FortAwesome/react-fontawesome
 https://www.react-spring.io/

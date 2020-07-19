@@ -1,4 +1,5 @@
-import React, { Component  } from 'react';
+ import React, { Component  } from 'react';
+import Radium from 'radium';
 import InpOutField from './Assignments/Assignment2/InpOutField';
 import CharComponent from './Assignments/Assignment2/CharComponent';
 
@@ -26,8 +27,26 @@ class Assignment2 extends Component {
 		        clicked={() => this.deleteTargetChar(idx)} 
 		    />;
 	    });
+
+    	const style = {
+		  backgroundColor: 'green',
+		  transition: 'all 0.4s',
+
+		  '@media (max-width: 980px)': {
+		    backgroundColor: 'blue'
+		  },
+
+		  '@media (max-width: 570px)': {
+		    backgroundColor: 'red'
+		  },
+
+		  '@media (max-width: 320px)': {
+		    backgroundColor: 'yellow'
+		  }
+		};
+
 		return (
-			<div>
+			<div style={style}>
 				<InpOutField
 					change={(e) => this.changeTheInp(e)}
 					current={this.state.item}
@@ -39,4 +58,4 @@ class Assignment2 extends Component {
 
 }
 
-export default Assignment2;
+export default Radium(Assignment2);
