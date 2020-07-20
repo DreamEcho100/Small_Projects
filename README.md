@@ -20,6 +20,7 @@ git push -u origin master
 |-------------------------------------------------------|
 
 npm install --save react-router-dom
+npm install websocket-extensions
 npm i emotion
 npm install @emotion/core
 npm install @emotion/styled
