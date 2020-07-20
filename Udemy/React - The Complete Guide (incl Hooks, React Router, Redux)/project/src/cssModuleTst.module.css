@@ -1,0 +1,26 @@
+.Tst {
+	color: red;
+	background-color: salmon;
+	font-weight: 500;
+	display: block;
+	transition: all 0.2s;
+}
+
+@media (max-width: 980px) {
+	.Tst {
+		background-color: blue;
+	}				
+}
+
+@media (max-width: 570px) {
+	.Tst {
+		background-color: red;
+		color: blue;
+	}	
+}
+
+@media (max-width: 320px) {
+	.Tst {
+		background-color: yellow;
+	}	
+}
