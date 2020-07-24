@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
 import cssModuleTst from './cssModuleTst.module.css';
 import Radium, {StyleRoot} from 'radium'
 import styled from 'styled-components';
 import Assignment1 from './Components/Assignment1';
 import Assignment2 from './Components/Assignment2';
-import TogglingDivWithBtnClassBased from './Components/TogglingDivWithBtn(ClassBased)';
+import TogglingDivWithBtnClassBased from './Components/TogglingDivWithBtnClassBased';
+import TogglingDivWithBtnFunctionBased from './Components/TogglingDivWithBtnFunctionBased';
 
 class App extends React.Component  {
 	constructor(props) {
@@ -23,6 +24,9 @@ class App extends React.Component  {
 		console.log('[App.js] componentWillMount');
 	}
 */
+	componentWillUnmount() {
+		console.log('[App.js] componentWillUnmount');
+	}
 
 	componentDidMount() {
 		console.log('[App.js] componentDidMount');
@@ -31,14 +35,17 @@ class App extends React.Component  {
     render() {
     	console.log('[App.js] render');
 		return (
-			<StyleRoot>
-				<div className="App">
-					<TogglingDivWithBtnClassBased />
-					<Assignment1 />
-					<Assignment2 />
-					<p className={cssModuleTst.Tst}>Hello World</p>
-				</div>
-			</StyleRoot>
+			<Fragment>
+				<StyleRoot>
+					<div className="App">
+						<TogglingDivWithBtnClassBased />
+						<Assignment1 />
+						<Assignment2 />
+						<p className={cssModuleTst.Tst}>Hello World</p>
+						<TogglingDivWithBtnFunctionBased />
+					</div>
+				</StyleRoot>
+			</Fragment>
 		);
 	}
 }

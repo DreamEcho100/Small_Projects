@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const ToggleElement = styled.div`
 						margin: 1rem;
+						width: fit-content;
 						background-image: linear-gradient(to left, #${Math.random().toString(16).substr(-6)}, #${Math.random().toString(16).substr(-6)});
 						color: #${Math.random().toString(16).substr(-6)};
 						font-size: 3rem;
@@ -30,24 +31,24 @@ class TogglingDivWithBtnClassBased extends React.Component  {
 	}
 
 	static getDerivedStateFromProps(props, state) {
-		console.log('[TogglingDivWithBtn(ClassBased).js] getDerivedStateFromProps');
+		console.log('[TogglingDivWithBtnClassBased.js] getDerivedStateFromProps');
 		console.log(state);
 		return state;
 	}
-/*
+
 	shouldComponentUpdate(nextProps, nextState) {
-		console.log('[TogglingDivWithBtn(ClassBased).js] shouldComponentUpdate');
+		console.log('[TogglingDivWithBtnClassBased.js] shouldComponentUpdate');
 		console.log({state: this.state, nextState: nextState});
-		return {state: this.state, nextState: nextState};
+		return this.state !== nextState ? true : false;
 	}
-*/
+
 	getSnapshotBeforeUpdate(prevProps, prevState) {
-		console.log('[TogglingDivWithBtn(ClassBased).js] getSnapshotBeforeUpdate');
+		console.log('[TogglingDivWithBtnClassBased.js] getSnapshotBeforeUpdate');
 		return {prevProps: prevProps, prevState:prevState}
 	}
 
 	componentDidUpdate(prevProps, prevState, snapeshot) {
-		console.log('[TogglingDivWithBtn(ClassBased).js] componentDidUpdate');
+		console.log('[TogglingDivWithBtnClassBased.js] componentDidUpdate');
 		console.log(snapeshot);
 	}
 
@@ -61,7 +62,7 @@ class TogglingDivWithBtnClassBased extends React.Component  {
 	}
 
     render() {
-    	console.log('[TogglingDivWithBtn(ClassBased).js] rendering...');
+    	console.log('[TogglingDivWithBtnClassBased.js] rendering...');
 		return (
 			<div style={style1}>
 				<button onClick={this.toggleElem}>Click To Show :)</button>

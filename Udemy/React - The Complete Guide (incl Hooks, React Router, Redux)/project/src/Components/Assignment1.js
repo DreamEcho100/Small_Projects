@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import InpOutField from './Assignments/Assignment1/InpOutField';
 
@@ -31,7 +31,7 @@ const StyleDiv = styled.div`
 	}
 `;
 
-class Assignment1 extends React.Component  {
+class Assignment1 extends React.PureComponent  {
 	state = {
 		inp: 'lol'
 	}
@@ -64,4 +64,4 @@ class Assignment1 extends React.Component  {
 	}
 }
 
-export default Assignment1;
+export default React.memo(Assignment1);

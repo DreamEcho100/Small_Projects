@@ -2,6 +2,7 @@
 import Radium from 'radium';
 import InpOutField from './Assignments/Assignment2/InpOutField';
 import CharComponent from './Assignments/Assignment2/CharComponent';
+import Aux from '../hoc/Auxiliary';
 
 class Assignment2 extends Component {
 	state = {
@@ -10,6 +11,12 @@ class Assignment2 extends Component {
 
 	changeTheInp = (e) => {
 		this.setState( { item: e.target.value } );
+	}
+
+	shouldComponentUpdate(nextProps, nextState) {
+		console.log('[TogglingDivWithBtnClassBased.js] shouldComponentUpdate');
+		console.log({state: this.state, nextState: nextState});
+		return this.state !== nextState ? true : false;
 	}
 
     deleteTargetChar = (idx) => {
@@ -47,13 +54,15 @@ class Assignment2 extends Component {
 		
 		console.log('[Assignment2.js] rendering...');
 		return (
-			<div style={style}>
-				<InpOutField
-					change={(e) => this.changeTheInp(e)}
-					current={this.state.item}
-				/>
-				{buildingChars}
-			</div>
+			<Aux>
+				<div style={style}>
+					<InpOutField
+						change={(e) => this.changeTheInp(e)}
+						current={this.state.item}
+					/>
+					{buildingChars}
+				</div>
+			</Aux>
 		)
 	}
 
