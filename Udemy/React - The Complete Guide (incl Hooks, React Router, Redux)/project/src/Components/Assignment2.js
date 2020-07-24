@@ -6,7 +6,7 @@ import Aux from '../hoc/Auxiliary';
 
 class Assignment2 extends Component {
 	state = {
-		item: "lol"
+		item: "`(~-o-~)`"
 	}
 
 	changeTheInp = (e) => {
