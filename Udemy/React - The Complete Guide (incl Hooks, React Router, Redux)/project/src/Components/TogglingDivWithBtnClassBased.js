@@ -24,6 +24,7 @@ const style1 = {
 class TogglingDivWithBtnClassBased extends React.Component  {
 	constructor(props) {
 		super(props);
+		this.toggleBtnRef = React.createRef();
 	}
 
 	state = {
@@ -52,6 +53,12 @@ class TogglingDivWithBtnClassBased extends React.Component  {
 		console.log(snapeshot);
 	}
 
+	componentDidMount() {
+		this.toggleBtnRef.current.click();
+		setTimeout( () => document.querySelector("#t-1") ? this.toggleBtnRef.current.click() : null , 5000)
+		console.log(" componentDidMount")
+	}
+
 	toggleElem = () => {
 		this.setState({showElem: !this.state.showElem});
 		if (this.state.showElem) {
@@ -64,8 +71,8 @@ class TogglingDivWithBtnClassBased extends React.Component  {
     render() {
     	console.log('[TogglingDivWithBtnClassBased.js] rendering...');
 		return (
-			<div style={style1}>
-				<button onClick={this.toggleElem}>Click To Show :)</button>
+			<div style={style1} id="t-1">
+				<button ref={this.toggleBtnRef} onClick={this.toggleElem}>Click To Show :)</button>
 				{elem1}
 			</div>
 		);

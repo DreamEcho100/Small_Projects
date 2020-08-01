@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Radium, {StyleRoot} from 'radium';
 import styled from 'styled-components';
 
@@ -24,6 +24,7 @@ const ToggleElement = styled.div`
 let elem1;					
 
 const TogglingDivWithBtnFunctionBased = (props) => {
+	const toggleBtnRef = useRef(null)
 	const [showElem, setShowElem] = useState(true);
 	useEffect( () => {
 		console.log('[TogglingDivWithBtnFunctionBased.js] useEffect');
@@ -31,6 +32,8 @@ const TogglingDivWithBtnFunctionBased = (props) => {
 
 	useEffect( () => {
 		console.log('[TogglingDivWithBtnFunctionBased.js] useEffect, First time bro!');
+		toggleBtnRef.current.click();
+		setTimeout( () => document.querySelector("#t-2") ? toggleBtnRef.current.click() : null , 5000)
 		return () => {
 			console.log('[TogglingDivWithBtnFunctionBased.js] cleanup work in useEffect')
 		}
@@ -46,8 +49,8 @@ const TogglingDivWithBtnFunctionBased = (props) => {
 	}
 
 	return (
-		<div style={style2}>
-			<button onClick={toggleElem}>Click To Show :)</button>
+		<div style={style2}  id="t-2">
+			<button ref={toggleBtnRef} onClick={toggleElem}>Click To Show :)</button>
 			{elem1}
 		</div>
 	);

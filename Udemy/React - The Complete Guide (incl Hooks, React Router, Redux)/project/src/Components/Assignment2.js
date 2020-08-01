@@ -1,71 +1,79 @@
- import React, { Component  } from 'react';
-import Radium from 'radium';
-import InpOutField from './Assignments/Assignment2/InpOutField';
-import CharComponent from './Assignments/Assignment2/CharComponent';
-import Aux from '../hoc/Auxiliary';
+import React, { Component } from "react";
+import Radium from "radium";
+import InpOutField from "./Assignments/Assignment2/InpOutField";
+import CharComponent from "./Assignments/Assignment2/CharComponent";
+import Aux from "../hoc/Auxiliary";
 
 class Assignment2 extends Component {
-	state = {
-		item: "`(~-o-~)`"
-	}
+  constructor(props) {
+    super(props);
+  }
+  state = {
+    item: "`(~-o-~)`✨",
+  };
 
-	changeTheInp = (e) => {
-		this.setState( { item: e.target.value } );
-	}
+  componentDidMount() {
+    //document.querySelector("#assignment2Output-2").querySelector("input").focus();
+  }
 
-	shouldComponentUpdate(nextProps, nextState) {
-		console.log('[TogglingDivWithBtnClassBased.js] shouldComponentUpdate');
-		console.log({state: this.state, nextState: nextState});
-		return this.state !== nextState ? true : false;
-	}
+  changeTheInp = (e) => {
+    this.setState({ item: e.target.value });
+  };
 
-    deleteTargetChar = (idx) => {
-    	const txt = this.state.item.split("");
-    	txt.splice(idx, 1)
-    	const temp = txt.join("");
-    	this.setState( {item: temp} )
-    }
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("[TogglingDivWithBtnClassBased.js] shouldComponentUpdate");
+    console.log({ state: this.state, nextState: nextState });
+    return this.state !== nextState ? true : false;
+  }
 
-	render() {
-		const buildingChars = this.state.item.split('').map((ch, idx) => {
-	      return <CharComponent 
-		        character={ch} 
-		        key={idx}
-		        clicked={() => this.deleteTargetChar(idx)} 
-		    />;
-	    });
+  deleteTargetChar = (idx) => {
+    const txt = this.state.item.split("");
+    txt.splice(idx, 1);
+    const temp = txt.join("");
+    this.setState({ item: temp });
+  };
 
-    	const style = {
-		  backgroundColor: 'green',
-		  transition: 'all 0.4s',
+  render() {
+    const buildingChars = this.state.item.split("").map((ch, idx) => {
+      return (
+        <CharComponent
+          character={ch}
+          key={idx}
+          clicked={() => this.deleteTargetChar(idx)}
+        />
+      );
+    });
 
-		  '@media (max-width: 980px)': {
-		    backgroundColor: 'blue'
-		  },
+    const style = {
+      backgroundColor: "green",
+      transition: "all 0.4s",
 
-		  '@media (max-width: 570px)': {
-		    backgroundColor: 'red'
-		  },
+      "@media (max-width: 980px)": {
+        backgroundColor: "blue",
+      },
 
-		  '@media (max-width: 320px)': {
-		    backgroundColor: 'yellow'
-		  }
-		};
-		
-		console.log('[Assignment2.js] rendering...');
-		return (
-			<Aux>
-				<div style={style}>
-					<InpOutField
-						change={(e) => this.changeTheInp(e)}
-						current={this.state.item}
-					/>
-					{buildingChars}
-				</div>
-			</Aux>
-		)
-	}
+      "@media (max-width: 570px)": {
+        backgroundColor: "red",
+      },
 
+      "@media (max-width: 320px)": {
+        backgroundColor: "yellow",
+      },
+    };
+
+    console.log("[Assignment2.js] rendering...", this.props);
+    return (
+      <Aux>
+        <div style={style} id={`assignment2Output-${this.props.id}`}>
+          <InpOutField
+            change={(e) => this.changeTheInp(e)}
+            current={this.state.item}
+          />
+          {buildingChars}
+        </div>
+      </Aux>
+    );
+  }
 }
 
 export default Radium(Assignment2);
