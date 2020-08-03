@@ -51,17 +51,20 @@ form button:hover {
 
 .todo-container {
 	display: flex;
-	justify-content: center;
-	align-items: center;
+    justify-content: center;
+    align-items: start;
+    height: 100%;
 }
 
 .todo-list {
-	min-width: 25rem;
-	/*
-	min-width: 35%;
-	*/
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    min-width: 25rem;
+    /* min-width: 35%; */
     overflow: hidden;
-	list-style: none;
+    list-style: none;
+    height: 100%;
 }
 
 .todo {
@@ -72,7 +75,7 @@ form button:hover {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	transition: all 0.3s ease;
+	transition: all 0.5s ease;
 }
 
 .todo li {
@@ -108,8 +111,66 @@ form button:hover {
 	opacity: 0;
 }
 
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: none;
+}
+
+.select {
+	margin: 1rem;
+	position: relative;
+	overflow: hidden;
+}
+
+select {
+	color: #ff6f47;
+	width: 10rem;
+	cursor: pointer;
+	padding: 1rem;
+}
+
+.select::after {
+	content: "\25BC";
+	position: absolute;
+	background: #ff6f47;
+    padding: 0.7rem 1rem;
+    top: 0px;
+    right: 0px;
+	pointer-events: none;
+	transition: background 0.3s ease, color 0.3s ease;
+}
+.select:hover::after {
+	background: white;
+	color: #ff6f47;
+}
+.select:focus::after, .select:focus-within::after {
+    padding: 0.62rem 1rem;
+    top: 1.2px;
+    right: 1px;
+}
+
+/*
+.select:focus::after,
+.select:focus-within::after {
+    content: "X";
+    padding: 1rem 1.2rem;
+}
+*/
+
+@media only screen and (max-width: 685px) {
+  form {
+  	display: flex;
+  	/*flex-direction: column;*/
+  	flex-wrap: wrap;
+  }
+}
+
+/*
 @media screen only (max-width: 890px) {
 	.todo-list {
 	    min-width: 52%;
 	}
 }
+*/
