@@ -120,6 +120,11 @@ svg {
 	    margin: 3.5rem auto auto auto;
 	    flex-wrap: wrap;
 	}
+
+	.kick, .snare, .hihat {
+	    display: flex;
+	    margin: auto;
+	}
 	.play {
 	    margin-top: 3.5rem;
 	}
@@ -130,9 +135,6 @@ svg {
 	    margin: 0 2% 0 0;
 	    width: 100%;
 	    padding: 0 3rem;
-	}
-	.kick, .snare, .hihat {
-	    flex-wrap: wrap;
 	}
 	.kick-track, .snare-track, .hihat-track  {
 	    flex-direction: column;
