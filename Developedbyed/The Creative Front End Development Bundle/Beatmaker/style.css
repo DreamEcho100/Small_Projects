@@ -26,21 +26,21 @@
 .controls button {
 	padding: 1rem;
 	border: none;
-	background: rgb(88, 88, 88);
 	color: white;
+	background: rgb(182, 182, 182);
 	font-size: 1rem;
 	cursor: pointer;
 	transition: all 0.5s ease;
 }
 
-select {
+.controls select {
     padding: 1rem;
     font-size: 1rem;
     width: fit-content;
 }
 
 .mute.active {
-	background: rgb(182, 182, 182);
+	background: rgb(88, 88, 88);
 }
 
 .tempo {
@@ -135,38 +135,61 @@ svg {
 	}
 }
 
-@media (max-width: 1058px) {
-  .controls {
-		margin: 0 2% 0 0;
-		width: 100%;
-	}
+@media only screen and (max-width: 1060px) {
 	.kick-track, .snare-track, .hihat-track {
-	    margin: 3.5rem auto auto auto;
+	    margin: 1rem auto auto auto;
 	    flex-wrap: wrap;
 	}
-
-	.kick, .snare, .hihat {
-	    display: flex;
+	.controls {
+    	width: 30%;
 	    margin: auto;
+	    font-size: 0.8rem;
+	}
+	.kick, .snare, .hihat {
+	    margin: 0 auto;
+	}
+	.controls button {
+	    padding: 0.7rem;
+	    margin: 0.5rem;
+	}
+	.controls select {
+	    padding: 0.5rem;
+	    font-size: 0.8rem;
+	    width: 6rem;
 	}
 	.play {
-	    margin-top: 3.5rem;
+	    margin-top: 1rem;
+	}
+	.tempo p {
+	    margin: 0.5rem;
 	}
 }
 
-@media (max-width: 929px) {
+@media only screen and (max-width: 660px) {
+	.kick, .snare, .hihat {
+	    flex-wrap: wrap;
+    	justify-content: center;
+	}
+	.kick-pad, .snare-pad, .hihat-pad {
+	    margin: 0.5rem 0.5rem;
+	}
+}
+
+
+@media only screen and (max-width: 250px) {
 	.controls {
-	    margin: 0 2% 0 0;
-	    width: 100%;
-	    padding: 0 3rem;
+    	width: 30%;
+	    margin: auto;
+	    font-size: 0.7rem;
 	}
-	.kick-track, .snare-track, .hihat-track  {
-	    flex-direction: column;
-	    width: 100%;
-	    padding: 0% 1%;
-	    margin: 1.5rem auto;
+
+	.controls button {
+	    padding: 0.6rem;
+	    margin: 0.4rem;
 	}
-	.play {
-	    margin-top: 1.5rem auto;
+	.controls select {
+	    padding: 0.4rem;
+	    font-size: 0.7rem;
+	    width: 4rem;
 	}
 }
