@@ -72,9 +72,13 @@ svg {
 	pointer-events: none;
 }
 
+
+.clap-track,
+.cowbell-track,
+.crash-track,
+.hihat-track,
 .kick-track,
-.snare-track,
-.hihat-track {
+.snare-track {
     display: flex;
     align-items: center;
     width: fit-content;
@@ -82,38 +86,66 @@ svg {
     margin: 5rem auto auto auto;
 }
 
+
+.clap,
+.cowbell,
+.crash,
+.hihat,
 .kick,
-.snare,
-.hihat {
+.snare {
 	display: flex;
 }
 
+
+.clap-pad,
+.cowbell-pad,
+.crash-pad,
+.hihat-pad,
 .kick-pad,
-.snare-pad,
-.hihat-pad {
+.snare-pad {
 	width: 4rem;
 	height: 4rem;
 	margin: 1rem 0.5rem;
 	cursor: pointer;
 }
 
+
+.clap-pad {
+	background: rgb(247 118 118);
+}
+.cowbell-pad {
+	background: rgb(120 247 118);
+}
+.crash-pad {
+	background: rgb(132 135 243);
+}
+.hihat-pad {
+	background: rgb(224, 194, 160);
+}
 .kick-pad {
 	background: rgb(160, 221, 224);
 }
 .snare-pad {
 	background: rgb(224, 160, 208);
 }
-.hihat-pad {
-	background: rgb(224, 194, 160);
+
+.clap-pad.active {
+	background: rgb(255 65 65);
+}
+.cowbell-pad.active {
+	background: rgb(63 239 61);
+}
+.crash-pad.active {
+	background: rgb(45 49 208);
+}
+.hihat-pad.active {
+	background: rgb(241, 158, 64);
 }
 .kick-pad.active {
 	background: rgb(59, 197, 231);
 }
 .snare-pad.active {
 	background: rgb(218, 58, 178);
-}
-.hihat-pad.active {
-	background: rgb(241, 158, 64);
 }
 
 .play {
@@ -136,7 +168,7 @@ svg {
 }
 
 @media only screen and (max-width: 1060px) {
-	.kick-track, .snare-track, .hihat-track {
+	.clap-track, .cowbell-track, .crash-track, .hihat-track, .kick-track, .snare-track {
 	    margin: 1rem auto auto auto;
 	    flex-wrap: wrap;
 	}
@@ -145,7 +177,7 @@ svg {
 	    margin: auto;
 	    font-size: 0.8rem;
 	}
-	.kick, .snare, .hihat {
+	.clap, .cowbell, .crash,.hihat, .kick, .snare {
 	    margin: 0 auto;
 	}
 	.controls button {
@@ -166,11 +198,11 @@ svg {
 }
 
 @media only screen and (max-width: 660px) {
-	.kick, .snare, .hihat {
+	.clap, .cowbell, .crash,.hihat, .kick, .snare {
 	    flex-wrap: wrap;
     	justify-content: center;
 	}
-	.kick-pad, .snare-pad, .hihat-pad {
+	.clap-pad, .cowbell-pad, .crash-pad,.hihat-pad, .kick-pad, .snare-pad {
 	    margin: 0.5rem 0.5rem;
 	}
 }

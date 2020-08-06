@@ -2,12 +2,18 @@ class DrumKit {
 	constructor() {
 		this.pads = document.querySelectorAll(".pad");
 		this.playBtn = document.querySelector(".play");
+		this.currentClap = "./sounds/clap-808.wav";
+		this.currentcowbell = "./sounds/cowbell-808.wav";
+		this.currentcrash = "./sounds/crash-808.wav";
+		this.currentHihat = "./sounds/hihat-808.wav";
 		this.currentKick = "./sounds/kick-808.wav";
 		this.currentSnare = "./sounds/snare-808.wav";
-		this.currentHihat = "./sounds/hihat-808.wav";
+		this.clapAudio = document.querySelector(".clap-sound");
+		this.cowbellAudio = document.querySelector(".cowbell-sound");
+		this.crashAudio = document.querySelector(".crash-sound");
+		this.hihatAudio = document.querySelector(".hihat-sound");
 		this.kickAudio = document.querySelector(".kick-sound");
 		this.snareAudio = document.querySelector(".snare-sound");
-		this.hihatAudio = document.querySelector(".hihat-sound");
 		this.index = 0;
 		this.bpm = 150;
 		this.isPlaying = null;
@@ -25,15 +31,24 @@ class DrumKit {
 		activeBars.forEach( bar => {
 			bar.style.animation = `playTrack 0.3s alternate ease-in-out 2.15`;
 			if (bar.classList.contains("active")) {
-				if (bar.classList.contains("kick-pad")) {
+				if (bar.classList.contains("clap-pad")) {
+					this.clapAudio.currentTime = 0;
+					this.clapAudio.play();
+				} else if (bar.classList.contains("cowbell-pad")) {
+					this.cowbellAudio.currentTime = 0;
+					this.cowbellAudio.play();
+				} else if (bar.classList.contains("crash-pad")) {
+					this.crashAudio.currentTime = 0;
+					this.crashAudio.play();
+				} else if (bar.classList.contains("hihat-pad")) {
+					this.hihatAudio.currentTime = 0;
+					this.hihatAudio.play();
+				} else if (bar.classList.contains("kick-pad")) {
 					this.kickAudio.currentTime = 0;
 					this.kickAudio.play();
 				} else if (bar.classList.contains("snare-pad")) {
 					this.snareAudio.currentTime = 0;
 					this.snareAudio.play();
-				} else if (bar.classList.contains("hihat-pad")) {
-					this.hihatAudio.currentTime = 0;
-					this.hihatAudio.play();
 				}
 			}
 		} );
@@ -64,14 +79,23 @@ class DrumKit {
 		const selectionName = e.target.name;
 		const selectionValue = e.target.value;
 		switch (selectionName) {
+			case "clap-select":
+				this.clapAudio.src = selectionValue;
+				break;
+			case "cowbell-select":
+				this.cowbellAudio.src = selectionValue;
+				break;
+			case "crash-select":
+				this.crashAudio.src = selectionValue;
+				break;
+			case "hihat-select":
+				this.hihatAudio.src = selectionValue;
+				break;
 			case "kick-select":
 				this.kickAudio.src = selectionValue;
 				break;
 			case "snare-select":
 				this.snareAudio.src = selectionValue;
-				break;
-			case "hihat-select":
-				this.hihatAudio.src = selectionValue;
 				break;
 		}
 	}
@@ -87,13 +111,22 @@ class DrumKit {
 	loudOrMute(idx, value) {
 		switch (idx) {
 			case "0":
-				this.kickAudio.volume = value;
+				this.clapAudio.volume = value;
 				break;
 			case "1":
-				this.snareAudio.volume = value;
+				this.cowbellAudio.volume = value;
 				break;
 			case "2":
+				this.crashAudio.volume = value;
+				break;
+			case "3":
 				this.hihatAudio.volume = value;
+				break;
+			case "4":
+				this.kickAudio.volume = value;
+				break;
+			case "5":
+				this.snareAudio.volume = value;
 				break;
 		}
 	}
