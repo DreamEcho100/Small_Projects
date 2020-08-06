@@ -51,7 +51,7 @@ class DrumKit {
 		activeBars.forEach( bar => {
 			bar.style.animation = `playTrack 0.3s alternate ease-in-out 2.15`;
 
-			let temp = bar.parentElement.className;
+			let temp = bar.parentElement.className.replace(/ track/ig, "");;
 			if (bar.classList.contains("active")) {
 				this[`${temp}Audio`].currentTime = 0;
 				this[`${temp}Audio`].play();
