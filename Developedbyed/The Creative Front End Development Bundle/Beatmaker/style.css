@@ -110,6 +110,12 @@ svg {
 .kick-pad {
 	background: rgb(160, 221, 224);
 }
+.openhat-pad {
+	background: rgb(239 247 118);
+}
+.perc-pad {
+	background: rgb(118 247 164);
+}
 .snare-pad {
 	background: rgb(224, 160, 208);
 }
@@ -128,6 +134,12 @@ svg {
 }
 .kick-pad.active {
 	background: rgb(59, 197, 231);
+}
+.openhat-pad.active {
+	background: rgb(255 235 60);
+}
+.perc-pad.active {
+	background: rgb(0, 255, 91);
 }
 .snare-pad.active {
 	background: rgb(218, 58, 178);

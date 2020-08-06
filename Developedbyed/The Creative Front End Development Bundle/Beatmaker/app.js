@@ -5,6 +5,8 @@ class DrumKit {
 						{name:"crash"},
 						{name:"hihat"},
 						{name:"kick"},
+						{name: "openhat"},
+						{name: "perc"},
 						{name:"snare"}];
 		this.init();
 		/*
@@ -34,7 +36,8 @@ class DrumKit {
 		this.tracks.forEach( (track, idx) => {
 			const currentTrack = `current${track.name.slice(0, 1).toUpperCase() + track.name.slice(1)}`;
 			const trackAudio = `${track.name}Audio`;
-			this[currentTrack] = `./sounds/${track.name}-808.wav`;
+			const audio = document.querySelector(`#${track.name}-select`).value;
+			this[currentTrack] = audio;
 			this[trackAudio] = document.querySelector(`.${track.name}-sound`);
 
 			let temp = document.querySelector(`.${track.name}-track .controls button`);
@@ -42,8 +45,7 @@ class DrumKit {
 		} )
 	}
 	activePad() {
-		console.log(this);
-		this.classList.toggle("active");
+				this.classList.toggle("active");
 	}
 	repeat() {
 		let step = this.index % 8;
