@@ -1,11 +1,11 @@
 class DrumKit {
 	constructor() {
-		this.tracks = [{name:"clap", "data-track": 0},
-						{name:"cowbell", "data-track": 1},
-						{name:"crash", "data-track": 2},
-						{name:"hihat", "data-track": 3},
-						{name:"kick", "data-track": 4},
-						{name:"snare", "data-track": 5}];
+		this.tracks = [{name:"clap"},
+						{name:"cowbell"},
+						{name:"crash"},
+						{name:"hihat"},
+						{name:"kick"},
+						{name:"snare"}];
 		this.init();
 		/*
 		this.currentClap = "./sounds/clap-808.wav";
@@ -50,6 +50,13 @@ class DrumKit {
 		const activeBars = document.querySelectorAll(`.b${step}`);
 		activeBars.forEach( bar => {
 			bar.style.animation = `playTrack 0.3s alternate ease-in-out 2.15`;
+
+			let temp = bar.parentElement.className;
+			if (bar.classList.contains("active")) {
+				this[`${temp}Audio`].currentTime = 0;
+				this[`${temp}Audio`].play();
+			}
+			/*
 			if (bar.classList.contains("active")) {
 				if (bar.classList.contains("clap-pad")) {
 					this.clapAudio.currentTime = 0;
@@ -71,6 +78,7 @@ class DrumKit {
 					this.snareAudio.play();
 				}
 			}
+			*/
 		} );
 		this.index++;
 	}

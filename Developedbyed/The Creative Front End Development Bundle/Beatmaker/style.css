@@ -73,12 +73,7 @@ svg {
 }
 
 
-.clap-track,
-.cowbell-track,
-.crash-track,
-.hihat-track,
-.kick-track,
-.snare-track {
+.track-section {
     display: flex;
     align-items: center;
     width: fit-content;
@@ -87,22 +82,12 @@ svg {
 }
 
 
-.clap,
-.cowbell,
-.crash,
-.hihat,
-.kick,
-.snare {
+.track {
 	display: flex;
 }
 
 
-.clap-pad,
-.cowbell-pad,
-.crash-pad,
-.hihat-pad,
-.kick-pad,
-.snare-pad {
+.track-pad {
 	width: 4rem;
 	height: 4rem;
 	margin: 1rem 0.5rem;
@@ -168,7 +153,7 @@ svg {
 }
 
 @media only screen and (max-width: 1060px) {
-	.clap-track, .cowbell-track, .crash-track, .hihat-track, .kick-track, .snare-track {
+	.track-section {
 	    margin: 1rem auto auto auto;
 	    flex-wrap: wrap;
 	}
@@ -177,7 +162,7 @@ svg {
 	    margin: auto;
 	    font-size: 0.8rem;
 	}
-	.clap, .cowbell, .crash,.hihat, .kick, .snare {
+	.track {
 	    margin: 0 auto;
 	}
 	.controls button {
@@ -198,11 +183,11 @@ svg {
 }
 
 @media only screen and (max-width: 660px) {
-	.clap, .cowbell, .crash,.hihat, .kick, .snare {
+	.track {
 	    flex-wrap: wrap;
     	justify-content: center;
 	}
-	.clap-pad, .cowbell-pad, .crash-pad,.hihat-pad, .kick-pad, .snare-pad {
+	.track-pad {
 	    margin: 0.5rem 0.5rem;
 	}
 }
