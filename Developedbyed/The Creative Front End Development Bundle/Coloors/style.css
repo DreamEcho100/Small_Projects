@@ -49,14 +49,16 @@ svg {
 	position: absolute;
 	bottom: 0%;
 	background: white;
-	opacity: 0;
 	padding: 1rem;
 	width: 80%;
-	pointer-events: none;
 	border-top-right-radius: 1rem;
 	border-top-left-radius: 1rem;
-	transform: translateY(100px);
 	transition: all 0.5s ease-in-out;
+	pointer-events: none;
+	/*
+	opacity: 0;
+	transform: translateY(100px);
+	*/
 }
 .sliders.active {
 	opacity: 1;
@@ -120,3 +122,12 @@ svg {
 	margin: 2rem 0rem;
 }
 
+input[type="range"] {
+	-webkit-appearance: none;
+	margin: 0.5rem 0rem;
+	width: 100%;
+	position: relative;
+	border-radius: 1rem;
+	cursor: pointer;
+	pointer-events: auto;
+}
