@@ -2,6 +2,7 @@ const colorDivs = document.querySelectorAll(".color");
 const generateBtn = document.querySelectorAll(".generate");
 const sliders = document.querySelectorAll("input[type='range']");
 const currentHexes = document.querySelectorAll(".color h2");
+const popup = document.querySelector(".copy-container");
 let initialColors;
 
 sliders.forEach( slider => {
@@ -12,6 +13,18 @@ colorDivs.forEach( (div, idx) => {
 		updateTxtUI(idx);
 	} );
 } );
+currentHexes.forEach( (hex) => {
+	hex.addEventListener("click", () => {
+		copyToClipboard(hex);
+	} );
+} );
+popup.addEventListener("transitionend", () => {
+	if (popup.classList.contains("active")) {
+		const popupBox = popup.children[0];
+		popup.classList.remove("active");
+		popupBox.classList.remove("active");
+	}
+} );
 
 
 function generateHex() {
@@ -20,12 +33,17 @@ function generateHex() {
 };
 
 function randomColors() {
+	initialColors = [];
 	colorDivs.forEach( (div, idx) => {
 		const hexTxt = div.children[0];
 		const randomColor = generateHex();
 
+		initialColors.push(chroma(randomColor).hex());
+
 		div.style.backgroundColor = randomColor;
 		hexTxt.innerText = randomColor;
+
+		//initialColors.push(hexTxt.innerText);
 
 		checkTextConstrast(randomColor, hexTxt);
 
@@ -38,6 +56,7 @@ function randomColors() {
 		colorizeSliders(color, hue, brightness, saturation);
 
 	} );
+	resetInputs();
 }
 
 function checkTextConstrast(color, txt) {
@@ -108,7 +127,7 @@ function hslControls(e) {
 	const brightness = sliders[1];
 	const saturation = sliders[2];
 
-	const bgColor = colorDivs[idx].querySelector("h2").innerText;
+	const bgColor = initialColors[idx];
 
 	let color = chroma(bgColor)
 	.set('hsl.s', saturation.value)
@@ -116,6 +135,8 @@ function hslControls(e) {
 	.set('hsl.h', hue.value);
 
 	colorDivs[idx].style.backgroundColor = color;
+
+	colorizeSliders(color, hue, brightness, saturation);
 }
 
 function updateTxtUI(idx) {
@@ -124,6 +145,50 @@ function updateTxtUI(idx) {
 	const txtHex = activeDiv.querySelector("h2");
 	const icons = activeDiv.querySelectorAll(".control button");
 	txtHex.innerText = color.hex();
+
+	checkTextConstrast(color, txtHex);
+	for (icon of icons) {
+		checkTextConstrast(color, icon);
+	}
+}
+
+function resetInputs() {
+	const sliders = document.querySelectorAll(".sliders input");
+	sliders.forEach( slider => {
+		if (slider.name === 'hue') {
+			const hueColor = initialColors[slider.getAttribute('data-hue')];
+			const hueValue = chroma(hueColor).hsl()[0];
+			slider.value = Math.floor(hueValue);//.toFixed(2);
+		} else if (slider.name === 'brightness') {
+			const brightColor = initialColors[slider.getAttribute('data-bright')];
+			const brightValue = chroma(brightColor).hsl()[1];
+			slider.value = brightValue.toFixed(2);
+		} else if (slider.name === 'saturation') {
+			const satColor = initialColors[slider.getAttribute('data-sat')];
+			const satValue = chroma(satColor).hsl()[2];
+			slider.value = satValue.toFixed(2);
+		}
+	} );
+}
+
+function copyToClipboard(hex) {
+	const el = document.createElement("textarea");
+	el.value = hex.innerText;
+	document.body.appendChild(el);
+	el.select();
+	document.execCommand("copy");
+	document.body.removeChild(el);
+
+	const popupBox = popup.children[0];
+	popup.classList.add("active");
+	popupBox.classList.add("active");
+	setTimeout(() => {
+		if (popup.classList.contains("active")) {
+			const popupBox = popup.children[0];
+			popup.classList.remove("active");
+			popupBox.classList.remove("active");
+		}
+	}, 550);
 }
 
 randomColors();
