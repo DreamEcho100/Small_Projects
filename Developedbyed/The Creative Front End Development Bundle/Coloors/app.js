@@ -1,13 +1,15 @@
 const colorDivs = document.querySelectorAll(".color");
-const generateBtn = document.querySelectorAll(".generate");
+const generateBtn = document.querySelector(".generate");
 const sliders = document.querySelectorAll("input[type='range']");
 const currentHexes = document.querySelectorAll(".color h2");
 const popup = document.querySelector(".copy-container");
-const adjustBtn = document.querySelectorAll(".adjust");
+const adjustBtns = document.querySelectorAll(".adjust");
+const locktBtns = document.querySelectorAll(".lock");
 const closeAdjustments = document.querySelectorAll(".close-adjustment");
 const slidersContainers = document.querySelectorAll(".sliders")
 let initialColors;
 
+generateBtn.addEventListener("click", randomColors);
 sliders.forEach( slider => {
 	slider.addEventListener("input", hslControls);
 } );
@@ -28,11 +30,26 @@ popup.addEventListener("transitionend", () => {
 		popupBox.classList.remove("active");
 	}
 } );
-[adjustBtn, closeAdjustments].forEach( item => {
+locktBtns.forEach( (btn, idx) => {
+	btn.addEventListener("click", (e) => {
+		lockLayer(e, idx);
+	} );
+} );
+/*
+[adjustBtns, closeAdjustments].forEach( item => {
 	item.forEach( (btn, idx) => {
 		btn.addEventListener("click", () => {
 			AdjustPanelStats(idx);
 		} );
+	} );
+} );
+*/
+adjustBtns.forEach( (btn, idx) => {
+	btn.addEventListener("click", () => {
+		AdjustPanelStats(idx);
+	} );
+	closeAdjustments[idx].addEventListener("click", () => {
+		AdjustPanelStats(idx);
 	} );
 } );
 
@@ -46,9 +63,15 @@ function randomColors() {
 	initialColors = [];
 	colorDivs.forEach( (div, idx) => {
 		const hexTxt = div.children[0];
-		const randomColor = generateHex();
+		let randomColor;
 
-		initialColors.push(chroma(randomColor).hex());
+		if (div.classList.contains("locked")) {
+			initialColors.push(hexTxt.innerText);
+			return;
+		} else {
+			randomColor = generateHex();
+			initialColors.push(chroma(randomColor).hex());
+		}
 
 		div.style.backgroundColor = randomColor;
 		hexTxt.innerText = randomColor;
@@ -66,43 +89,19 @@ function randomColors() {
 		colorizeSliders(color, hue, brightness, saturation);
 
 	} );
+	
 	resetInputs();
+
+	adjustBtns.forEach( (btn, idx) => {
+		checkTextConstrast(initialColors[idx], btn);
+		checkTextConstrast(initialColors[idx], locktBtns[idx]);
+	} );
 }
 
 function checkTextConstrast(color, txt) {
 	const luminance = chroma(color).luminance()
 	txt.style.color = luminance > 0.5 ? "black" : "white";
 }
-
-/*
-function randomColors() {
-	colorDivs.forEach( (div, idx) => {
-		const hexTxt = div.children[0];
-		const randomColor = generateHex();
-
-		div.style.backgroundColor = randomColor;
-		hexTxt.innerText = randomColor;
-
-
-		const luminance = chroma(randomColor).luminance();
-		if (luminance > 0.5) {
-			checkTextConstrast(randomColor, hexTxt, "low")
-		} else if (luminance <= 0.5) {
-			checkTextConstrast(randomColor, hexTxt, "high")
-		}
-	} );
-}
-
-function checkTextConstrast(color, txt, type) {
-	const randomColor = generateHex();
-
-	if (type === "high") {
-		txt.style.color = chroma(randomColor).luminance() > 0.5 ? randomColor : checkTextConstrast(color, txt, type);
-	} else if (type === "low") {
-		txt.style.color = chroma(randomColor).luminance() < 0.5 ? randomColor : checkTextConstrast(color, txt, type);
-	}
-}
-*/
 
 function colorizeSliders(color, hue, brightness, saturation) {
 	const noSat = color.set("hsl.s", 0);
@@ -160,12 +159,19 @@ function updateTxtUI(idx) {
 	for (icon of icons) {
 		checkTextConstrast(color, icon);
 	}
+
+	
+	checkTextConstrast(color, adjustBtns[idx]);
+	checkTextConstrast(color, currentHexes[idx]);
+	checkTextConstrast(color, locktBtns[idx]);
 }
 
 function resetInputs() {
 	const sliders = document.querySelectorAll(".sliders input");
 	sliders.forEach( slider => {
-		if (slider.name === 'hue') {
+		if (slider.parentElement.parentElement.classList.contains("locked")) {
+			return;
+		} else if (slider.name === 'hue') {
 			const hueColor = initialColors[slider.getAttribute('data-hue')];
 			const hueValue = chroma(hueColor).hsl()[0];
 			slider.value = Math.floor(hueValue);//.toFixed(2);
@@ -203,6 +209,19 @@ function copyToClipboard(hex) {
 
 function AdjustPanelStats(idx) {
 	slidersContainers[idx].classList.toggle("active");
+}
+
+function lockLayer(e, idx) {
+	const lockSVG = e.target.children[0];
+	const activeBg = colorDivs[idx];
+	activeBg.classList.toggle("locked");
+
+	if (lockSVG.classList.contains("fa-lock-open")) {
+		e.target.innerHTML = "<i class='fas fa-lock'></i>";
+	} else {
+		e.target.innerHTML = "<i class='fas fa-lock-open'></i>";
+	}
+  
 }
 
 randomColors();
