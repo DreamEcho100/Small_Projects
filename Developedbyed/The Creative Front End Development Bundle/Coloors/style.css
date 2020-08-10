@@ -63,7 +63,9 @@ svg {
 	transform: translateY(0px);
 	pointer-events: all;
 }
-.sliders button {
+.sliders button,
+.close-save,
+.close-library {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -130,7 +132,9 @@ input[type="range"] {
 	pointer-events: auto;
 }
 
-.copy-container {
+.copy-container,
+.save-container,
+.library-container {
 	position: fixed;
 	top: 0%;
 	left: 0%;
@@ -145,7 +149,9 @@ input[type="range"] {
 	pointer-events: none;
 }
 
-.copy-popup {
+.copy-popup,
+.save-popup,
+.library-popup {
 	background: white;
 	display: flex;
 	flex-direction: column;
@@ -158,18 +164,89 @@ input[type="range"] {
 	min-height: 30vh;
 }
 
-.copy-popup h4 {
-	font-size: 2rem;
-	padding: 2rem;
+
+
+.copy-popup h4,
+.save-popup h4,
+.library-popup h4 {
+    font-size: 2rem;
+    padding: 1rem 0.5rem;
 }
 
-.copy-container.active {
+.copy-container.active,
+.save-container.active,
+.library-container.active {
 	opacity: 1;
 	pointer-events: all;
 }
-.copy-popup.active {
+.copy-popup.active,
+.save-popup.active,
+.library-popup.active {
 	transform: translateY(0rem);
 }
+
+.save-name {
+	font-size: 1.3rem;
+	padding: 0.8rem;
+}
+
+.close-save,
+.close-library {
+	border-top-right-radius: 1rem;
+	border-bottom-left-radius: 1rem;
+	padding: 0.5rem;
+}
+
+.submit-save {
+	margin: 2rem;
+	padding: 1rem 3rem;
+	background: rgb(60, 60, 92);
+	border: none;
+	border-radius: 10px;
+	color: white;
+    cursor: pointer;
+    font-weight: 900;
+    font-size: 1.05rem;
+}
+
+.library-popup {
+	min-width: 40%;
+	padding: 1rem;
+	justify-content: flex-start;
+	overflow-y: scroll;
+	max-height: 50vh;
+}
+.custom-palette {
+	display: flex;
+	align-items: center;
+	justify-content:  space-evenly;
+	width: 100%;
+	padding: 2rem;
+}
+.small-preview {
+	display: flex;
+	flex: 1;
+}
+.custom-palette h4 {
+	flex: 1;
+}
+.small-preview div {
+    height: 5rem;
+    width: 3rem;
+    flex: 1;
+}
+
+.pick-palette-btn {
+    height: 5rem;
+    width: 3rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 900;
+    background: rgb(68, 68, 68);
+    color: white;
+}
+
 /*
 @media screen only (max-width: ) {}
 */
