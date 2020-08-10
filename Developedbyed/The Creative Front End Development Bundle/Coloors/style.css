@@ -247,6 +247,64 @@ input[type="range"] {
     color: white;
 }
 
-/*
-@media screen only (max-width: ) {}
-*/
+@media only screen and (max-width: 600px) {
+	.colors {
+	    flex-direction: column;
+	    max-height: 80vh;
+	}
+	.color {
+	    flex-direction: row;
+	    justify-content: flex-end;
+	}
+	.controls {
+	    width: 20%;
+	}
+	.adjust, .lock {
+	    margin: 0em 1rem;
+	}
+	.color h2 {
+	    margin: 10% 0;
+	    width: 30%;
+	    text-align: center;
+	}
+	.sliders {
+	    left: 0%;
+	    padding: 0.3rem;
+	    width: 45%;
+	    height: 98%;
+	}
+	.sliders span {
+	    font-size: 0.7rem;
+	    font-weight: 900;
+	}
+	.sliders button, .close-save, .close-library {    padding: 0.4rem;
+	    font-size: 0.5rem;
+	    font-weight: 900;
+	    padding: 0.3rem;
+	}
+	input[type="range"] {
+	    height: 9%;
+	    margin: 0.3rem 0rem
+	}
+}
+
+@media only screen and (max-width: 375px) {
+	.color h2 {
+	    font-size: 1.5rem;
+	    margin: 10% 4% 10% 0;
+	}
+	.panel {
+	    justify-content: space-around;
+	}
+	.panel button {
+	    display: flex;
+	    justify-content: center;
+	    width: 33%;
+	    font-size: 1.1rem;
+	    margin: 0;
+	    padding: 0.8rem 1.6rem;
+	}
+	.adjust, .lock {
+	    font-size: 1.4rem;
+	}
+}
