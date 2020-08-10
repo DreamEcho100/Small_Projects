@@ -277,14 +277,43 @@ input[type="range"] {
 	    font-size: 0.7rem;
 	    font-weight: 900;
 	}
-	.sliders button, .close-save, .close-library {    padding: 0.4rem;
+	.sliders button,
+	.close-save,
+	.close-library {
+		padding: 0.45rem;
 	    font-size: 0.5rem;
 	    font-weight: 900;
-	    padding: 0.3rem;
+	}
+	.close-save {
+		padding: 0.57rem;
 	}
 	input[type="range"] {
 	    height: 9%;
 	    margin: 0.3rem 0rem
+	}
+	.library-popup {
+	    max-width: 80%;
+	}
+	.copy-popup h4, .save-popup h4, .library-popup h4 {
+	    font-size: 1.5rem;
+	}
+	.small-preview div {
+	    height: 3rem;
+	    width: 2rem;
+	}
+	.pick-palette-btn {
+	    height: 2rem;
+	    width: 3rem;
+	    padding: 0.1rem;
+	    transform: rotate(90deg);
+	}
+	.save-name {
+	    font-size: 1.2rem;
+	    padding: 0.2rem;
+	}
+	.submit-save {
+	    padding: 1.1rem 2rem;
+	    font-size: 1rem;
 	}
 }
 
@@ -306,5 +335,32 @@ input[type="range"] {
 	}
 	.adjust, .lock {
 	    font-size: 1.4rem;
+	}
+	.copy-popup h4, .save-popup h4, .library-popup h4 {
+	    font-size: 1.5rem;
+	    padding: 1rem 0rem;
+	}
+	.copy-popup h4, .save-popup h4, .library-popup h4 h4 {
+	    font-size: 1.2rem;
+	    padding: 1rem 0.1rem;
+	}
+}
+
+
+
+@media only screen and (max-width: 260px) {
+.adjust, .lock {
+    font-size: 1.3rem;
+}
+.controls {
+    height: 85%;
+    justify-content: space-between;
+}
+	.panel button {
+	    font-size: 0.9rem;
+	    padding: 0.6rem 1.2rem;
+	}
+	.custom-palette {
+	    padding: 1rem;
 	}
 }
