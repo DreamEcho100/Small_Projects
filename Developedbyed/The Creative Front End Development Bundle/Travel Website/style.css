@@ -82,18 +82,149 @@ svg {
 .hike-span {
 	color: rgb(167, 110, 231);
 }
-.mountain-span {
+.fashion-span {
 	color: rgb(255, 139, 93);
 }
 
 .hero-desc h2 {
-	font-family: 'Abril Fatface', cursive;
-	font-size: 5rem;
+    font-family: 'Abril Fatface', cursive;
+    font-size: 3rem;
+    line-height: 3.5rem;
+}
+.hero-desc p {
+    padding: 1rem 0rem;
+    font-size: 1rem;
+    font-family: 'Abril Fatface', cursive;
+}
+.explore {
+    padding: 0.8rem 1.6rem;
+    background: none;
+    border: none;
+    color: white;
+    border: 1px solid black;
+    font-size: 1rem;
+    text-decoration: none;
+    align-self: flex-start;
+    cursor: pointer;
 }
 
-.hero-desc h2 {
+.nav-bar {
+	    padding: 1rem;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: white;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	z-index: 1;
+	opacity: 1;
+	clip-path: circle(50px at 100% -10%);
+	-webkit-clip-path: circle(50px at 100% -10%);
+}
+.burger {
+	cursor: pointer;
+}
+.nav-links {
+	font-size: 3rem;
+	flex-basis: 30rem;
+}
+.nav-links h3 {
 	padding: 3rem 0rem;
+}
+.contact {
+	flex-basis: 30rem;
+}
+.contact h2 {
+	font-size: 3rem;
+	padding: 2rem 0rem;
+}
+.contact p {
 	font-size: 1.5rem;
-	font-family: 'Abril Fatface', cursive;
+	line-height: 2rem;
 }
 
+.reveal-img,
+.reveal-txt {
+	position: absolute;
+	width: 105%;
+	height: 100%;
+	background: #17181a;
+	left: 0;
+	top: 0;
+}
+
+.cursor {
+	width: 3rem;
+	height: 3rem;
+	border: 2px solid white;
+	border-radius: 50%;
+	position: absolute;
+}
+
+@media only screen and (max-width: 800px) {
+	.hero-img img,
+	.reveal-img {
+	    transform: translateY(-76px);
+	    width: 200%;
+	}
+	.nav-links {
+	    line-height: 0rem;
+	    font-size: 2rem;
+	    flex-basis: 30rem;
+	}
+	.contact h2 {
+	    font-size: 2rem;
+	    padding: 1rem 0rem;
+	}
+	.contact p {
+	    font-size: 1.2rem;
+	    line-height: 1.8rem;
+	}
+}
+@media only screen and (max-width: 540px) {
+	.hero-img img,
+	.reveal-img {
+	    width: 400%;
+	}
+	.nav-links h3 {
+	    padding: 2rem 0rem;
+	}
+	.nav-bar {
+	    flex-direction: column;
+	}
+	.nav-links {
+	    margin-bottom: -15rem;
+	}
+}
+@media only screen and (max-width: 470px) {
+	.slide {
+	    flex-direction: column;
+	}
+	.hero-img{
+	    margin-top: -2rem;
+	}
+	.hero-img img,
+	.reveal-img  {
+		transform: translate(-15px, 50px);
+	    width: 100%;
+	}
+	.hero-desc {
+		padding-left: 0;
+	    transform: translate(25px, -270px);
+	}
+	.reveal-txt {
+	    transform: translate(-5px, 0px);
+	}
+	.nav-links {
+		margin-bottom: 0px;
+	    display: flex;
+	    flex-wrap: wrap;
+	    justify-content: space-around;
+	}
+	/*.nav-links h3 {
+	    margin: 1rem 1rem 0rem 1rem;
+	}*/
+}
