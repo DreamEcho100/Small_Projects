@@ -26,6 +26,8 @@ svg {
 }
 
 .nav-header {
+	position: relative;
+	z-index: 1;
 	min-height: 10vh;
 	font-size: 1rem;
 	display: flex;
@@ -122,7 +124,6 @@ svg {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	z-index: 11;
 	opacity: 1;
 	clip-path: circle(50px at 100% -10%);
 	-webkit-clip-path: circle(50px at 100% -10%);
@@ -170,6 +171,7 @@ svg {
 	transition: all 0.5s ease-in-out;
 	transition-property: background, transform;
 	transform-origin: 75% 75%;
+	z-index: 99;
 }
 
 .cursor.nav-active {
@@ -229,5 +231,105 @@ svg {
 	.explore {
 	    padding: 0.6rem 1.2rem;
 	    font-size: 0.8rem;
+	}
+}
+
+body.hide {
+	overflow: hidden;
+}
+
+/*----------------------------------------------------------*/
+
+/*----------------------------------------------------------*/
+.fashion1,
+.fashion2,
+.fashion3 {
+	min-height: 90vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 80%;
+	margin: auto;
+	color: white;
+	margin-top: 5rem;
+	flex-wrap: wrap;
+	position: relative;
+}
+.fashion-img {
+	height: 80vh;
+	    max-width: 20rem;
+	flex-basis: 30rem;
+}
+.fashion-img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.fashion-txt {
+	flex: 1;
+	position: relative;
+	flex-basis: 30rem;
+}
+.fashion-txt h1 {
+	font-size: 5.5rem;
+    margin-top: -5rem;
+}
+
+.fashion1 {
+	color: rgb(255, 139, 93);
+}
+.fashion2 {
+	color: rgb(167, 110, 231);
+}
+.fashion3 {
+	color: rgb(86, 124, 228);
+}
+
+.fashion-txt p {
+	font-size: 1.7rem;
+	margin: 2rem 2rem 0rem 0rem;
+	margin-bottom: 10rem;
+}
+.fashion-num {
+    font-size: 15rem;
+    position: absolute;
+    left: 42%;
+    bottom: 1%;
+    color: white;
+    opacity: 0.2;
+}
+
+@media only screen and (max-width: 400px) {
+	.nav-header {
+	    width: 90%;
+	    padding: 1rem 0rem;
+	}
+	.nav-bar {
+	    flex-direction: column;
+	    justify-content: center;
+	}
+	.nav-links {
+	    margin-top: 20%;
+	    height: 20vh;
+	    font-size: 2rem;
+	    margin-bottom: -90%;
+	}
+	.nav-links h3 {
+	    padding: 0;
+	    text-align: center;
+	}
+	.contact {
+		height: 60vh;
+	}
+	.contact h2 {
+	    font-size: 2rem;
+	    padding: 1rem 0rem;
+	    text-align: center;
+	}
+	.contact p {
+	    font-size: 1rem;
+	    font-weight: 500;
+	    text-align: center;
+	    line-height: 2rem;
 	}
 }
