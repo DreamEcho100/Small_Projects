@@ -12,6 +12,7 @@ class DrumKit {
 		this.bpm = 150;
 		this.isPlaying = null;
 	}
+	
 	init() {
 		const { items, tracks } = this;
 		items.forEach((item, idx) => {

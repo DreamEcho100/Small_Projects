@@ -57,8 +57,10 @@ function activeCursor(e) {
 	let item = e.target;
 	if (item.id === "logo" || item.classList.contains("burger")) {
 		mouse.classList.add("nav-active");
+		mouse.style.mixBlendMode = "screen";
 	} else  {
 		mouse.classList.remove("nav-active");
+		mouse.style.mixBlendMode = "none";
 	}
 
 	if (item.classList.contains("explore")) {
