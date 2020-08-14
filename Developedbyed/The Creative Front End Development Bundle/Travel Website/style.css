@@ -91,6 +91,7 @@ svg {
 .hero-desc h2 {
     font-family: 'Abril Fatface', cursive;
     font-size: 3rem;
+    font-weight: 100;
     line-height: 3.5rem;
 }
 .hero-desc p {
@@ -111,7 +112,7 @@ svg {
 }
 
 .nav-bar {
-	    padding: 1rem;
+	padding: 1rem;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -121,7 +122,7 @@ svg {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	z-index: 1;
+	z-index: 11;
 	opacity: 1;
 	clip-path: circle(50px at 100% -10%);
 	-webkit-clip-path: circle(50px at 100% -10%);
@@ -164,7 +165,50 @@ svg {
 	border: 2px solid white;
 	border-radius: 50%;
 	position: absolute;
-	display: none;
+	z-index: 10;
+	pointer-events: none;
+	transform: translate(-50%, -50%);
+	transition: all 0.5s ease-in-out;
+	transition-property: background, transform;
+	transform-origin: 75% 75%;
+}
+
+.cursor.nav-active {
+	background: rgb(86,124, 228);
+	transform: scale(3);
+}
+.cursor.explore-active {
+	background: white;
+	transform: scale(2);
+}
+.cursor-txt {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	font-size: 0.5rem;
+	transform: translate(-50%, -50%);
+}
+.title {
+	position: relative;
+	overflow: hidden;
+}
+.title-swipe {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: absolute;
+	mix-blend-mode: darken;
+	transform: translateY(100%);
+}
+.t-swipe1 {
+	background: rgb(86, 124, 228);
+}
+.t-swipe2 {
+	background: rgb(167, 110, 231);
+}
+.t-swipe3 {
+	background: rgb(255, 139, 93);
 }
 
 .scrollmagic-pin-spacer {
@@ -188,66 +232,3 @@ svg {
 	    font-size: 0.8rem;
 	}
 }
-/*
-@media only screen and (max-width: 800px) {
-	.hero-img img,
-	.reveal-img {
-	    transform: translateY(-76px);
-	    width: 200%;
-	}
-	.nav-links {
-	    line-height: 0rem;
-	    font-size: 2rem;
-	    flex-basis: 30rem;
-	}
-	.contact h2 {
-	    font-size: 2rem;
-	    padding: 1rem 0rem;
-	}
-	.contact p {
-	    font-size: 1.2rem;
-	    line-height: 1.8rem;
-	}
-}
-@media only screen and (max-width: 540px) {
-	.hero-img img,
-	.reveal-img {
-	    width: 400%;
-	}
-	.nav-links h3 {
-	    padding: 2rem 0rem;
-	}
-	.nav-bar {
-	    flex-direction: column;
-	}
-	.nav-links {
-	    margin-bottom: -15rem;
-	}
-}
-@media only screen and (max-width: 470px) {
-	.slide {
-	    flex-direction: column;
-	}
-	.hero-img{
-	    margin-top: -2rem;
-	}
-	.hero-img img,
-	.reveal-img  {
-		transform: translate(-15px, 50px);
-	    width: 100%;
-	}
-	.hero-desc {
-		padding-left: 0;
-	    transform: translate(25px, -270px);
-	}
-	.reveal-txt {
-	    transform: translate(-5px, 0px);
-	}
-	.nav-links {
-		margin-bottom: 0px;
-	    display: flex;
-	    flex-wrap: wrap;
-	    justify-content: space-around;
-	}
-}
-*/
