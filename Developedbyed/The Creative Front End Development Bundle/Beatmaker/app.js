@@ -1,91 +1,58 @@
 class DrumKit {
-	constructor() {
-		this.tracks = [{name:"clap"},
-						{name:"cowbell"},
-						{name:"crash"},
-						{name:"hihat"},
-						{name:"kick"},
-						{name: "openhat"},
-						{name: "perc"},
-						{name:"snare"}];
+	constructor(items) {
+		this.items = items;
+		this.tracks = [];
 		this.init();
-		/*
-		this.currentClap = "./sounds/clap-808.wav";
-		this.currentcowbell = "./sounds/cowbell-808.wav";
-		this.currentcrash = "./sounds/crash-808.wav";
-		this.currentHihat = "./sounds/hihat-808.wav";
-		this.currentKick = "./sounds/kick-808.wav";
-		this.currentSnare = "./sounds/snare-808.wav";
-		this.clapAudio = document.querySelector(".clap-sound");
-		this.cowbellAudio = document.querySelector(".cowbell-sound");
-		this.crashAudio = document.querySelector(".crash-sound");
-		this.hihatAudio = document.querySelector(".hihat-sound");
-		this.kickAudio = document.querySelector(".kick-sound");
-		this.snareAudio = document.querySelector(".snare-sound");
-		*/
 		this.pads = document.querySelectorAll(".pad");
 		this.playBtn = document.querySelector(".play");
+		this.selects = document.querySelectorAll("select");
+		this.muteBtns = document.querySelectorAll(".mute-btn");
+		this.tempoSlider = document.querySelector(".tempo-slider");
 		this.index = 0;
 		this.bpm = 150;
 		this.isPlaying = null;
-		this.selects = document.querySelectorAll("select");
-		this.muteBtns = document.querySelectorAll(".mute");
-		this.tempoSlider = document.querySelector(".tempo-slider");
 	}
 	init() {
-		this.tracks.forEach( (track, idx) => {
-			const currentTrack = `current${track.name.slice(0, 1).toUpperCase() + track.name.slice(1)}`;
-			const trackAudio = `${track.name}Audio`;
-			const audio = document.querySelector(`#${track.name}-select`).value;
-			this[currentTrack] = audio;
-			this[trackAudio] = document.querySelector(`.${track.name}-sound`);
+		const { items, tracks } = this;
+		items.forEach((item, idx) => {
+			const tempObj = {}
+			const elem = document.querySelector(`.${item}-track`);
+			const itemCap = `${item.slice(0, 1).toUpperCase() + item.slice(1)}`;
 
-			let temp = document.querySelector(`.${track.name}-track .controls button`);
-			temp.setAttribute("data-track", idx);
-		} )
+			tempObj["Track"] = itemCap;
+			tempObj["track"] = item;
+			tempObj["trackElem"] = elem;
+			tempObj["trackIdx"] = idx;
+			tempObj["muteBtn"] = elem.querySelector(`.${item}-volume`);
+			tempObj["selectBtn"] = elem.querySelector(`#${item}-select`);
+			tempObj["pads"] = elem.querySelector(`.${item}.track`);
+			tempObj["audio"] = document.querySelector(`.${item}-sound`);
+
+			tracks.push(tempObj);
+
+			tracks[idx]["muteBtn"].setAttribute("data-track", tracks[idx]["trackIdx"]);
+		});
+
 	}
+
 	activePad() {
-				this.classList.toggle("active");
+		this.classList.toggle("active");
 	}
-	repeat() {
-		let step = this.index % 8;
-		const activeBars = document.querySelectorAll(`.b${step}`);
-		activeBars.forEach( bar => {
-			bar.style.animation = `playTrack 0.3s alternate ease-in-out 2.15`;
 
-			let temp = bar.parentElement.className.replace(/ track/ig, "");;
-			if (bar.classList.contains("active")) {
-				this[`${temp}Audio`].currentTime = 0;
-				this[`${temp}Audio`].play();
-			}
-			/*
-			if (bar.classList.contains("active")) {
-				if (bar.classList.contains("clap-pad")) {
-					this.clapAudio.currentTime = 0;
-					this.clapAudio.play();
-				} else if (bar.classList.contains("cowbell-pad")) {
-					this.cowbellAudio.currentTime = 0;
-					this.cowbellAudio.play();
-				} else if (bar.classList.contains("crash-pad")) {
-					this.crashAudio.currentTime = 0;
-					this.crashAudio.play();
-				} else if (bar.classList.contains("hihat-pad")) {
-					this.hihatAudio.currentTime = 0;
-					this.hihatAudio.play();
-				} else if (bar.classList.contains("kick-pad")) {
-					this.kickAudio.currentTime = 0;
-					this.kickAudio.play();
-				} else if (bar.classList.contains("snare-pad")) {
-					this.snareAudio.currentTime = 0;
-					this.snareAudio.play();
-				}
-			}
-			*/
-		} );
-		this.index++;
+	updateBtn() {
+		const { isPlaying, playBtn } = this;
+		if (isPlaying) {
+			playBtn.innerText = "Play";
+			playBtn.classList.remove("active");
+		} else {
+			playBtn.innerText = "Stop";
+			playBtn.classList.add("active");
+		}
 	}
+
 	start() {
-		const intrval = (60 / this.bpm) * 1000;
+		const { bpm } = this;
+		const intrval = (60 / bpm) * 1000;
 		if (this.isPlaying) {
 			clearInterval(this.isPlaying);
 			this.isPlaying = null;
@@ -96,45 +63,33 @@ class DrumKit {
 			}, intrval );
 		}		
 	}
-	updateBtn() {
-		if (this.isPlaying) {
-			this.playBtn.innerText = "Play";
-			this.playBtn.classList.remove("active");
-		} else {
-			this.playBtn.innerText = "Stop";
-			this.playBtn.classList.add("active");
-		}
+
+	repeat() {
+		let step = this.index % this.items.length;
+		const activeBars = document.querySelectorAll(`.b${step}`);
+		activeBars.forEach( (bar, idx) => {
+			bar.style.animation = `playTrack 0.3s alternate ease-in-out 2.15`;
+
+			let temp = bar.parentElement.className.replace(/ track/ig, "");;
+			if (bar.classList.contains("active")) {
+				this.tracks[idx]["audio"].currentTime = 0;
+				this.tracks[idx]["audio"].play();
+			}
+
+		} );
+		this.index++;
 	}
+
 	changeSound(e) {
 		const selectionName = e.target.name;
 		const selectionValue = e.target.value;
 
 		const targetAudio = selectionName.replace(/-.+/ig, "");
+		const idx = this.items.indexOf(targetAudio);
 
-		this[`${targetAudio}Audio`].src = selectionValue;
-		/*
-		switch (selectionName) {
-			case "clap-select":
-				this.clapAudio.src = selectionValue;
-				break;
-			case "cowbell-select":
-				this.cowbellAudio.src = selectionValue;
-				break;
-			case "crash-select":
-				this.crashAudio.src = selectionValue;
-				break;
-			case "hihat-select":
-				this.hihatAudio.src = selectionValue;
-				break;
-			case "kick-select":
-				this.kickAudio.src = selectionValue;
-				break;
-			case "snare-select":
-				this.snareAudio.src = selectionValue;
-				break;
-		}
-		*/
+		this.tracks[idx].audio.src = selectionValue;
 	}
+
 	mute(e) {
 		const muteIdx = e.target.getAttribute("data-track");
 		e.target.classList.toggle("active");
@@ -144,33 +99,18 @@ class DrumKit {
 			this.loudOrMute(muteIdx, 1);
 		}
 	}
+
 	loudOrMute(idx, value) {
-		switch (idx) {
-			case "0":
-				this.clapAudio.volume = value;
-				break;
-			case "1":
-				this.cowbellAudio.volume = value;
-				break;
-			case "2":
-				this.crashAudio.volume = value;
-				break;
-			case "3":
-				this.hihatAudio.volume = value;
-				break;
-			case "4":
-				this.kickAudio.volume = value;
-				break;
-			case "5":
-				this.snareAudio.volume = value;
-				break;
-		}
+		const { tracks } = this;
+		if (tracks[idx].audio.volume !== value) tracks[idx].audio.volume = value;
 	}
+
 	changeTempo(e, obj) {
 		const tempoTxt = document.querySelector(".tempo-num");
 		obj.bpm = e.target.value;
 		tempoTxt.innerText = e.target.value;
 	}
+
 	updateTempo(e, obj) {
 		clearInterval(obj.isPlaying);
 		obj.bpm = e.target.value;
@@ -180,9 +120,18 @@ class DrumKit {
 			obj.start();
 		}
 	}
+
 }
 
-const drumKit = new DrumKit();
+const drumKit = new DrumKit(["clap",
+							"cowbell",
+							"crash",
+							"hihat",
+							"kick",
+							"openhat",
+							"perc",
+							"snare"]);
+
 
 drumKit.pads.forEach( pad => {
 	pad.addEventListener("click", drumKit.activePad);
@@ -195,6 +144,7 @@ drumKit.playBtn.addEventListener("click", function() {
 	drumKit.updateBtn();
 	drumKit.start();
 });
+
 document.addEventListener("keypress", function(e) {
 	if (e.key === "Enter") {
 		drumKit.updateBtn();
@@ -208,18 +158,25 @@ drumKit.selects.forEach( select => {
 	});
 } );
 
-
 drumKit.muteBtns.forEach( btn => {
 	btn.addEventListener("click", function(e) {
 		drumKit.mute(e);
 	});
 } );
-/*
-drumKit.tempoSlider.addEventListener("input", function(e) {
-	drumKit.changeTempo(e);
-})*/
+
 [{func: drumKit.changeTempo, event: "input"}, {func: drumKit.updateTempo, event: "change"}].forEach( item => {
 	drumKit.tempoSlider.addEventListener( item.event, function(e) {
 		item.func(e, drumKit);
 	} );
 } );
+
+console.log(drumKit);
+
+
+
+
+
+
+
+
+

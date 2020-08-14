@@ -39,7 +39,7 @@
     width: fit-content;
 }
 
-.mute.active {
+.mute-btn.active {
 	background: rgb(88, 88, 88);
 }
 
