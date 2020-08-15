@@ -303,6 +303,27 @@ body.hide {
     opacity: 0.2;
 }
 
+.swipe {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	transform: translateX(-100%);
+}
+.swipe1 {
+	background: rgb(255, 139, 93);
+	z-index: 5;
+}
+.swipe {
+	background: rgb(167, 110, 231);
+	z-index: 4;
+}
+.swipe {
+	background: rgb(86, 124, 228);
+	z-index: 3;
+}
+
 @media only screen and (max-width: 400px) {
 	.nav-header {
 	    width: 90%;
