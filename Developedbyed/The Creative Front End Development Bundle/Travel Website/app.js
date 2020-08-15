@@ -11,7 +11,7 @@ function animateSlides() {
 		const revealTxt = slide.querySelector(".reveal-txt");
 		//gsap.to(revealImg, 3, {x: "100%"});
 		const slideTl = gsap.timeline( {
-			defaults: { duration: 1, ease: "power1.inout" }
+			defaults: { duration: 1, ease: "power1.inOut" }
 		} );
 		slideTl.fromTo(revealImg, { x: "0%" }, { x: "100%" });
 		//slideTl.fromTo(img, 0.7, { scale: "2" }, { scale: "1" });
@@ -122,14 +122,14 @@ barba.init({
 	],
 	transition: [{
 		leave({current, next}) {
-			let done = this.async()
-			const t1 = gsap.timeline({defaults: {ease: 'power2.inout'}})
+			let done = this.async();
+			const t1 = gsap.timeline({defaults: {ease: 'power2.inOut'}})
 			t1.fromTo(current.container, 1, {opacity: 1}, {opacity: 0, onComplete: done})
 		},
 		enter({current, next}) {
-			let done = this.async()
-			const t1 = gsap.timeline({defaults: {ease: 'power2.inout'}})
-			t1.fromTo(current.container, 1, {opacity: 0}, {opacity: 1, onComplete: done})
+			let done = this.async();
+			const t1 = gsap.timeline({defaults: {ease: 'power2.inOut'}})
+			t1.fromTo(next.container, 1, {opacity: 0}, {opacity: 1, onComplete: done})
 		}
 	}]
 });
