@@ -97,8 +97,79 @@ function navToggle(e) {
 		
 }
 
+
+
 burger.addEventListener("click", navToggle);
 window.addEventListener("mousemove", cursor);
 window.addEventListener("mouseover", activeCursor);
 
-animateSlides();
+barba.init({
+	views: [
+		{
+			namespace: "home",
+			beforeEnter() {
+				animateSlides();
+			},
+			beforeLeave(){
+				slideScene.destroy();
+				pageScene.destroy();
+				controller.destroy();
+			}
+		},
+		{
+			namespace: "fashion"
+		}
+	]
+});
+/*
+//Barba.Pjax.start();
+
+barba.init({
+  schema: {
+    prefix: 'data-custom',
+    wrapper: 'wrap'
+  }
+});
+
+barba.init({
+  transitions: [{
+    name: 'default-transition',
+    leave() {
+      // create your stunning leave animation here
+    },
+    enter() {
+      // create your amazing enter animation here
+    }
+  }]
+});
+
+barba.init({
+  transitions: [{
+    name: 'opacity-transition',
+    leave(data) {
+      return gsap.to(data.current.container, {
+        opacity: 0
+      });
+    },
+    enter(data) {
+      return gsap.from(data.next.container, {
+        opacity: 0
+      });
+    }
+  }]
+});
+
+barba.init({
+  views: [{
+    namespace: 'home',
+    beforeEnter() {
+      // update the menu based on user navigation
+      animateSlides();
+    },
+    afterEnter() {
+      // refresh the parallax based on new page content
+      //parallax.refresh();
+    }
+  }]
+}); 
+*/
