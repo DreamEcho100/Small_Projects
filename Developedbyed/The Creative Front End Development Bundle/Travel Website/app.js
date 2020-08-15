@@ -1,4 +1,4 @@
-let controller, slideScene, pageScene;
+let controller, slideScene, pageScene, detailScene;
 
 function animateSlides() {
 	controller = new ScrollMagic.Controller();
@@ -123,8 +123,15 @@ barba.init({
 			namespace: "fashion",
 			beforeEnter() {
 				logo.href = '../index.html';
+				detailAnimation();
 				gsap.fromTo(".nav-header", 1, {y: "100%"}, {y: "0%", ease: 'power2.inOut'})
 			},
+			beforeLeave(){
+				/*slideScene.destroy();
+				pageScene.destroy();*/
+				detailScene.destroy();
+				controller.destroy();
+			}
 		}
 	],
 	transition: [
@@ -145,3 +152,36 @@ barba.init({
 		}
 	]
 });
+
+function detailAnimation() {
+	controller = new ScrollMagic.Controller();
+	const sliders = document.querySelectorAll(".slide");
+
+	sliders.forEach((slide, idx, slides) => {
+		const slideTl = gsap.timeline({duration: {defaults: 1}});
+		let nextSlide = slide.length - 1 === idx ? "end" : slide[idx - 1];
+		const nextImg = nextSlide.querySelector("img");
+		slideTl.fromTo(slide, {opacity: 1}, {opacity: 0});
+		slideTl.fromTo(nextSlide, {opacity: 0}, {opacity: 1}, "-=1");
+
+		detailScene = new ScrollMagic.Scene({
+			triggerElement: slide,
+			duration: "100%",
+			triggerHook: 0,
+			reverse: false
+		}).setPin(slide, {pushFollowers: false})
+			.setTween(slideTl)
+			.addIndicators({colorStart: "white", colorTrigger: "white", name: "slide"})
+			.addTo(controller);
+
+		/*slideScene = new ScrollMagic.Scene({
+			triggerElement: slide,
+			triggerHook: 0.25,
+			reverse: false
+		})
+			.setTween(slideTl)
+			.addIndicators({colorStart: "white", colorTrigger: "white", name: "slide"})
+			.addTo(controller);
+			*/
+	});
+}
