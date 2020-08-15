@@ -123,6 +123,7 @@ barba.init({
 			namespace: "fashion",
 			beforeEnter() {
 				logo.href = '../index.html';
+				gsap.fromTo(".nav-header", 1, {y: "100%"}, {y: "0%", ease: 'power2.inOut'})
 			},
 		}
 	],
