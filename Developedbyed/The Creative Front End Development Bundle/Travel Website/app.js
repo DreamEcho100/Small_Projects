@@ -119,57 +119,17 @@ barba.init({
 		{
 			namespace: "fashion"
 		}
-	]
+	],
+	transition: [{
+		leave({current, next}) {
+			let done = this.async()
+			const t1 = gsap.timeline({defaults: {ease: 'power2.inout'}})
+			t1.fromTo(current.container, 1, {opacity: 1}, {opacity: 0, onComplete: done})
+		},
+		enter({current, next}) {
+			let done = this.async()
+			const t1 = gsap.timeline({defaults: {ease: 'power2.inout'}})
+			t1.fromTo(current.container, 1, {opacity: 0}, {opacity: 1, onComplete: done})
+		}
+	}]
 });
-/*
-//Barba.Pjax.start();
-
-barba.init({
-  schema: {
-    prefix: 'data-custom',
-    wrapper: 'wrap'
-  }
-});
-
-barba.init({
-  transitions: [{
-    name: 'default-transition',
-    leave() {
-      // create your stunning leave animation here
-    },
-    enter() {
-      // create your amazing enter animation here
-    }
-  }]
-});
-
-barba.init({
-  transitions: [{
-    name: 'opacity-transition',
-    leave(data) {
-      return gsap.to(data.current.container, {
-        opacity: 0
-      });
-    },
-    enter(data) {
-      return gsap.from(data.next.container, {
-        opacity: 0
-      });
-    }
-  }]
-});
-
-barba.init({
-  views: [{
-    namespace: 'home',
-    beforeEnter() {
-      // update the menu based on user navigation
-      animateSlides();
-    },
-    afterEnter() {
-      // refresh the parallax based on new page content
-      //parallax.refresh();
-    }
-  }]
-}); 
-*/
