@@ -13,6 +13,10 @@ body {
 	background: #17181a;
 	font-family: 'Montserrat', sans-serif;
 	overflow-x: hidden;
+	position: relative;
+}
+main {
+	position: absolute;
 }
 path,
 i,
