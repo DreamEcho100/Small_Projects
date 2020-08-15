@@ -17,7 +17,7 @@ function animateSlides() {
 		//slideTl.fromTo(img, 0.7, { scale: "2" }, { scale: "1" });
 		slideTl.fromTo(img,  { scale: "2" }, { scale: "1" }, "-=1");
 		slideTl.fromTo(revealTxt,  { x: "0%" }, { x: "100%" }, "-=0.75");
-		slideTl.fromTo(nav,  { y: "-100%" }, { y: "0%" }, "-=1");
+		//slideTl.fromTo(nav,  { y: "-100%" }, { y: "0%" }, "-=1");
 
 		slideScene = new ScrollMagic.Scene({
 			triggerElement: slide,
@@ -124,11 +124,9 @@ barba.init({
 			beforeEnter() {
 				logo.href = '../index.html';
 				detailAnimation();
-				gsap.fromTo(".nav-header", 1, {y: "100%"}, {y: "0%", ease: 'power2.inOut'})
+				
 			},
 			beforeLeave(){
-				/*slideScene.destroy();
-				pageScene.destroy();*/
 				detailScene.destroy();
 				controller.destroy();
 			}
@@ -148,6 +146,7 @@ barba.init({
 				const t1 = gsap.timeline({defaults: {ease: 'power2.inOut'}});
 				t1.fromTo(".swipe", 1, {x: '0%'}, {x: '100%', stagger: 0.25, onComplete: done}/*, "-=0.5"*/);
 				t1.fromTo(next.container, 1, {opacity: 0}, {opacity: 1});
+				tl.fromTo(".nav-header", 1, {y: "-100%"}, {y: "0%", ease: 'power2.inOut'}, "-=1.5")
 			}
 		}
 	]
@@ -163,6 +162,7 @@ function detailAnimation() {
 		const nextImg = nextSlide.querySelector("img");
 		slideTl.fromTo(slide, {opacity: 1}, {opacity: 0});
 		slideTl.fromTo(nextSlide, {opacity: 0}, {opacity: 1}, "-=1");
+		slideTl.fromTo(nextImg, {x: "100%"}, {x: "0%"});
 
 		detailScene = new ScrollMagic.Scene({
 			triggerElement: slide,
@@ -174,14 +174,5 @@ function detailAnimation() {
 			.addIndicators({colorStart: "white", colorTrigger: "white", name: "slide"})
 			.addTo(controller);
 
-		/*slideScene = new ScrollMagic.Scene({
-			triggerElement: slide,
-			triggerHook: 0.25,
-			reverse: false
-		})
-			.setTween(slideTl)
-			.addIndicators({colorStart: "white", colorTrigger: "white", name: "slide"})
-			.addTo(controller);
-			*/
 	});
 }
