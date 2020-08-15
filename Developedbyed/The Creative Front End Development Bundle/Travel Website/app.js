@@ -103,12 +103,15 @@ burger.addEventListener("click", navToggle);
 window.addEventListener("mousemove", cursor);
 window.addEventListener("mouseover", activeCursor);
 
+
+const logo = document.querySelector("#logo");
 barba.init({
 	views: [
 		{
 			namespace: "home",
 			beforeEnter() {
 				animateSlides();
+				logo.href = './index.html';
 			},
 			beforeLeave(){
 				slideScene.destroy();
@@ -117,7 +120,10 @@ barba.init({
 			}
 		},
 		{
-			namespace: "fashion"
+			namespace: "fashion",
+			beforeEnter() {
+				logo.href = '../index.html';
+			},
 		}
 	],
 	transition: [
