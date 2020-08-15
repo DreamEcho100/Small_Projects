@@ -124,12 +124,13 @@ barba.init({
 		leave({current, next}) {
 			let done = this.async();
 			const t1 = gsap.timeline({defaults: {ease: 'power2.inOut'}})
-			t1.fromTo(current.container, 1, {opacity: 1}, {opacity: 0, onComplete: done})
+			t1.fromTo(current.container, 7, {opacity: 1}, {opacity: 0, onComplete: done})
 		},
 		enter({current, next}) {
 			let done = this.async();
+			window.scrollTo(0, 0);
 			const t1 = gsap.timeline({defaults: {ease: 'power2.inOut'}})
-			t1.fromTo(next.container, 1, {opacity: 0}, {opacity: 1, onComplete: done})
+			t1.fromTo(next.container, 7, {opacity: 0}, {opacity: 1, onComplete: done})
 		}
 	}]
 });
