@@ -40,7 +40,8 @@ svg {
 	color: white;
 	width: 80%;
 	margin: auto;
-	padding: 2rem 0rem
+	padding: 2rem 0rem;
+	height: 15vh;
 }
 .line1,
 .line2 {
@@ -60,6 +61,7 @@ svg {
 	align-items: center;
 	color: white;
 	background: #17181a;
+	width: 90%;
 }
 
 .hero-img {
@@ -324,37 +326,92 @@ body.hide {
 	z-index: 3;
 }
 
-@media only screen and (max-width: 400px) {
-	.nav-header {
-	    width: 90%;
-	    padding: 1rem 0rem;
+@media screen and (max-width: 1015px) {
+	main {
+		width: 100%;
+		margin: 0;
 	}
-	.nav-bar {
-	    flex-direction: column;
-	    justify-content: center;
+	.slide {
+		display: block;
+		width: 100%;
+		text-align: center;
+		left: 0px !important;
+	}
+	.hero-desc {
+		padding: 0;
+	}
+	.hero-img {
+	    width: 100%;
+	}
+	.hero-img img {
+    	width: 24rem;
+	    padding-top: 4rem;
+	    margin: auto;
+	}
+	.hero-img h2 {
+    	font-size: 1.6rem
+    	padding: 1rem 0rem;
+	}
+	.hero-img p {
+    	padding: 2rem 1rem;
+    	font-size: 1rem;
+    	line-height: 1.5rem;
+    	text-align: center;
+	}
+	.explore {
+		width: 60%;
+		margin: auto;
+	}
+	.detailed-slide {
+		width: 100%;
+		text-align: center;
+	}
+	.fashion-num {
+		font-size: 8rem;
+	}
+	.fashion-txt h1 {
+	    margin: 1rem 0rem 0rem 0rem;
+	    font-size: 3rem;
+	}
+	.fashion-txt p {
+	    margin-bottom: 1rem;
+	    text-align: center;
+	}
+}
+
+@media only screen and (max-width: 640px) {
+	header.nav-header {
+	    left: 10px;
+	    width: 100%;
+	    margin: 0 1rem;
+	    justify-content: space-between;
+	    padding: 2rem;
+	}
+	nav.nav-bar {
+	    display: block;
 	}
 	.nav-links {
-	    margin-top: 20%;
-	    height: 20vh;
+    margin: 8vh 8vh 0 8vh;
 	    font-size: 2rem;
-	    margin-bottom: -90%;
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	    height: 27vh;
 	}
 	.nav-links h3 {
-	    padding: 0;
-	    text-align: center;
-	}
-	.contact {
-		height: 60vh;
+	    padding: 0.5rem 0rem 0rem 0rem;
 	}
 	.contact h2 {
-	    font-size: 2rem;
-	    padding: 1rem 0rem;
 	    text-align: center;
+	    font-size: 1.5rem;
+	    padding: 1rem 0rem;
 	}
 	.contact p {
-	    font-size: 1rem;
-	    font-weight: 500;
+	    font-size: 1.3rem;
 	    text-align: center;
-	    line-height: 2rem;
+	    line-height: 1.5rem;
+	}
+	.hero-img img {
+	    width: 85%;
 	}
 }
