@@ -31,7 +31,7 @@ function deleteAndCheck(e) {
 	const item = e.target;
 
 	if (item.classList[0] === "trash-btn") {
-		const todo = item.parentElement
+		const todo = item.parentElement.parentElement
 		todo.classList.add("inpFall");
 		setTimeout( () => removeLocalTodos(todo), 500)
 		todo.addEventListener("transitionend", () => todo.remove(item));
@@ -39,9 +39,9 @@ function deleteAndCheck(e) {
 
 	if (item.classList[0] === "completed-btn") {
 		let items = document.querySelectorAll(".todo");
-		item.parentElement.classList.toggle('completed');
+		item.parentElement.parentElement.classList.toggle('completed');
 		items.forEach( (elem, idx) => {
-			if (elem === item.parentElement) {
+			if (elem === item.parentElement.parentElement) {
 				let tempTodos = checkLocalStorage("todos");
 				tempTodos[idx].done = true;
 				localStorage.setItem("todos", JSON.stringify(tempTodos));
@@ -110,15 +110,20 @@ function buldingTodosItem(txt, done) {
 	newTodo.classList.add('todo-item');
 	todoDiv.appendChild(newTodo);
 
+	let todosBtns = document.createElement("div");
+	todosBtns.classList.add("todos-btns");
+
 	const completedBtn = document.createElement("button");
 	completedBtn.innerHTML = '<i class="fas fa-check"></i>';
 	completedBtn.classList.add("completed-btn");
-	todoDiv.appendChild(completedBtn);
+	todosBtns.appendChild(completedBtn);
 
 	const trashBtn = document.createElement("button");
 	trashBtn.innerHTML = '<i class="fas fa-trash"></i>';
 	trashBtn.classList.add("trash-btn");
-	todoDiv.append(trashBtn);
+	todosBtns.append(trashBtn);
+
+	todoDiv.append(todosBtns);
 
 	if (done) todoDiv.classList.toggle("completed")
 

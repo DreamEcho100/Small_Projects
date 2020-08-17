@@ -79,10 +79,16 @@ form button:hover {
 }
 
 .todo li {
-	flex: 1;
+    flex: 1;
     padding: 0rem 0.5rem;
+    line-break: anywhere;
 }
 
+.todos-btns {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
 .trash-btn,
 .completed-btn {
 	background: #ff6f47;
@@ -151,26 +157,45 @@ select {
     right: 1px;
 }
 
-/*
-.select:focus::after,
-.select:focus-within::after {
-    content: "X";
-    padding: 1rem 1.2rem;
-}
-*/
-
 @media only screen and (max-width: 685px) {
   form {
   	display: flex;
-  	/*flex-direction: column;*/
   	flex-wrap: wrap;
   }
 }
 
-/*
-@media screen only (max-width: 890px) {
-	.todo-list {
-	    min-width: 52%;
+@media only screen and (max-width: 420px) {
+	form input, form button {
+	    width: 80%;
+	    padding: 0.3rem;
+	    font-size: 1.5rem;
 	}
+	select {
+	    padding: 0.5rem;
+	        outline-color: white;
+	}
+	.select::after {
+	    padding: 0.2rem 1rem;
+	}
+	.select:hover::after {
+		background: white;
+		color: #ff6f47;
+	}
+	.select:focus::after, .select:focus-within::after {
+	    padding: 0.19rem 1rem;
+	    top: 0px;
+	    right: 0px;
+	}
+	.todo-list {
+	    align-items: center;
+	    min-width: 100%;
+
+	}
+	.todo {
+    width: 85%;
 }
-*/
+.todo li {
+	    font-size: 1rem;
+    font-weight: 500;
+}
+}
