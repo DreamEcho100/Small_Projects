@@ -32,7 +32,7 @@ header h2 {
 }
 .search-form {
 	padding: 2rem;
-	    padding-top: 0rem;
+	padding-top: 0rem;
 	display: flex;
 }
 .search-form input {
@@ -48,5 +48,51 @@ header h2 {
 	font-size: 1rem;
 	background: rgb(74, 68, 131);
 	color: white;
+	cursor: pointer;
+}
+
+.gallery-info {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: gray;
+	padding: 0.5rem 0rem;
+}
+.gallery-info a {
+	color: gray;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    padding: 2rem 0rem;
+    width: 80%;
+    margin: auto;
+    grid-gap: 3rem 2rem;
+}
+
+.gallery-img {
+    height: 60vh;
+}
+
+.gallery img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.nav-btn {
+	min-height: 30vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.more-imgs-btn {
+	padding: 1rem 3rem;
+	background: rgb(74, 68, 131);
+	color: white;
+	border: none;
+	font-size: 1.2rem;
 	cursor: pointer;
 }
