@@ -9,7 +9,7 @@ const apiKey = "&appid=a957f14e3c54881472646d30636a4a83";
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth() + "." + d.getDate() + "." + d.getFullYear();
+let newDate = (d.getMonth() + 1) + "." + d.getDate() + "." + d.getFullYear();
 
 // req -> request
 // res -> response
