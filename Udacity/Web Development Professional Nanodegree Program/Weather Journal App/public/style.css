@@ -77,6 +77,27 @@ button#generate {
     height: 25%;
 }
 
+@media screen and (max-width: 600px) {
+    label {
+        font-size: 1.2rem;
+    }
+    .holder.feel {
+        justify-content: space-evenly;
+    }
+    textarea#feelings {
+        height: 35%;
+        width: 90%;
+    }
+    button#generate {
+        height: 2rem;
+        width: 6.5rem;
+        font-size: 1rem;
+    }
+    .holder.entry {
+        font-size: 1.2rem;
+    }
+}
+
 /*
 #app{
     display: grid;
