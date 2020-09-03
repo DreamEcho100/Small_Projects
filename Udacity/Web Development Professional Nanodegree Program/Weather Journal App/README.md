@@ -10,11 +10,11 @@ This will require modifying the `server.js` file and the `website/app.js` file. 
 If you are interested in testing your code as you go, you can use `tests.js` as a template for writing and running some basic tests for your code.
 
 # Info
-Landing Page Project of the Web Development Professional Nanodegree Program on Udacity site
+Weather Journal App Project of the Web Development Professional Nanodegree Program on Udacity site
 
 ```
 This is the first projrct of the course
 ```
 
-## Review
-You can also see the code here ---> https://github.com/DreamEcho100/Small_Projects/tree/master/Udacity/Web%20Development%20Professional%20Nanodegree%20Program/
+## Review Code
+You can also see the code here ---> https://github.com/DreamEcho100/Small_Projects/tree/master/Udacity/Web%20Development%20Professional%20Nanodegree%20Program/Weather%20Journal%20App
