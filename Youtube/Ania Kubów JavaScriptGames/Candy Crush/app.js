@@ -11,12 +11,12 @@ document.addEventListener("DOMContentLoaded", () => {
 	scoreDisplay.textContent = score;
 
 	const candyColors = [
-		"url(alternative-images/alternative-red.png)", 
-		"url(alternative-images/alternative-yellow.png)", 
-		"url(alternative-images/alternative-orange.png)", 
-		"url(alternative-images/alternative-purple.png)", 
-		"url(alternative-images/alternative-green.png)", 
-		"url(alternative-images/alternative-blue.png)"
+		"url(alternative-images/alternative-red.png)",
+		"url(alternative-images/alternative-yellow.png)",
+		"url(alternative-images/alternative-orange.png)",
+		"url(alternative-images/alternative-purple.png)",
+		"url(alternative-images/alternative-green.png)",
+		"url(alternative-images/alternative-blue.png)",
 	];
 
 	// Create Board
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		colorBeingReplaced,
 		squareIdBeingDragged,
 		squareIdBeingReplaced;
-		/*replaceSquares*/
+	/*replaceSquares*/
 
 	function dragStart() {
 		colorBeingDragged = this.style.backgroundImage;
@@ -69,7 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
 		e.preventDefault();
 	}
 
-	function dragLeave() {}
+	function dragLeave() {
+		this.backgroundImage = "";
+	}
 
 	function dragDrop() {
 		squareIdBeingReplaced = parseInt(this.id);
@@ -109,22 +111,26 @@ document.addEventListener("DOMContentLoaded", () => {
 	// Drop candies once some have been cleared
 	function moveDown() {
 		for (let i = 0; i < 55; i++) {
-			firstRow.forEach( idx => {
+			firstRow.forEach((idx) => {
 				if (squares[idx].style.backgroundImage === "") {
-					let randomNum = Math.floor(Math.random() * candyColors.length);
+					let randomNum = Math.floor(
+						Math.random() * candyColors.length
+					);
 					squares[idx].style.backgroundImage = candyColors[randomNum];
 				}
 			});
 			if (squares[i + width].style.backgroundImage === "") {
-				squares[i + width].style.backgroundImage = squares[i].style.backgroundImage;
+				squares[i + width].style.backgroundImage =
+					squares[i].style.backgroundImage;
 				squares[i].style.backgroundImage = "";
 
 				const isFirstRow = firstRow.includes(i);
 				if (isFirstRow && squares[i].style.backgroundImage === "") {
-					let randomNum = Math.floor(Math.random() * candyColors.length);
+					let randomNum = Math.floor(
+						Math.random() * candyColors.length
+					);
 					squares[i].style.backgroundImage = candyColors[randomNum];
 				}
-
 			}
 		}
 	}
@@ -184,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			);
 			if (temp && !isBlank) {
 				score += num;
-					scoreDisplay.textContent = score;
+				scoreDisplay.textContent = score;
 				columnOfNum.forEach((idx) => {
 					squares[idx].style.backgroundImage = "";
 				});

@@ -1,10 +1,10 @@
 :root {
-    font-size: 62.5%;
-    --main-grid-width: calc(16rem + 25vw);
-    --main-grid-height: calc(16rem + 25vw);
+	font-size: 62.5%;
+	--main-grid-width: calc(16rem + 25vw);
+	--main-grid-height: calc(16rem + 25vw);
 }
 
-html, 
+html,
 body {
 	margin: 0;
 	padding: 0;
@@ -26,8 +26,8 @@ body {
 }
 
 .grid .square {
-    background-position: center;
-    background-size: cover;
+	background-position: center;
+	background-size: cover;
 	-webkit-animation: squareMoveDown 0.3s ease-in-out 0.05s 1 normal;
 	-moz-animation: squareMoveDown 0.3s ease-in-out 0.05s 1 normal;
 	-ms-animation: squareMoveDown 0.3s ease-in-out 0.05s 1 normal;
