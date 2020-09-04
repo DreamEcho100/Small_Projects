@@ -1425,6 +1425,27 @@ let ContentBuilder = (function () {
       exisist: true,
       courses: [
         {
+          courseSectionHeader: "Ania Kubów JavaScriptGames",
+          courseSectionHeaderType: "h3",
+          courseSectionInfo: "Ania Kubów #JavaScriptGames",
+          courseSectionClases: "spinningBackground1",
+          projects: [
+            coursesProjectObjBuilder(
+              "none",
+              "Candy Crush",
+              "index.html",
+              "??",
+              {
+                languages: ["HTML", "CSS", "JavaScript"],
+                libraries: [],
+                frameworks: [],
+                APIs: [],
+              },
+              "Candy Crush"
+            ),
+          ],
+        },
+        {
           courseSectionHeader: "Fireship",
           courseSectionHeaderType: "h3",
           courseSectionInfo: "Fireship",
